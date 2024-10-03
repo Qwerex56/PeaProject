@@ -1,0 +1,4 @@
+"E:\Rider Ides\CLion\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=E:/Rider Ides/CLion/bin/ninja/win/x64/ninja.exe" -DCMAKE_TOOLCHAIN_FILE=C:\Users\qwere\.vcpkg-clion\vcpkg\scripts\buildsystems\vcpkg.cmake -G Ninja -S E:\C-Projects\PeaProject\TspFirstPart -B E:\C-Projects\PeaProject\TspFirstPart\cmake-build-debug
+-- Configuring done (0.1s)
+-- Generating done (0.0s)
+-- Build files have been written to: E:/C-Projects/PeaProject/TspFirstPart/cmake-build-debug
