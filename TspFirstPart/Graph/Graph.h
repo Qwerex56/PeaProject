@@ -23,7 +23,6 @@ enum class GraphConf {
 enum class GraphType {
   TSP = 1 << 0,
   ATSP = 1 << 1,
-  TOUR = 1 << 2,
   UNKNOWN = 1 << 31
 };
 
@@ -38,7 +37,7 @@ class Graph {
 
   std::string GetName();
   std::string GetComment();
-  int GetDimension();
+  const int GetDimension();
 
   virtual std::tuple<int, std::vector<int>> GetPoint(const int &point_id) = 0;
 

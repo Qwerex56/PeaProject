@@ -47,19 +47,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = C:\Users\qwere\AppData\Local\Programs\CLion\bin\cmake\win\x64\bin\cmake.exe
+CMAKE_COMMAND = "E:\Rider Ides\CLion\bin\cmake\win\x64\bin\cmake.exe"
 
 # The command to remove a file.
-RM = C:\Users\qwere\AppData\Local\Programs\CLion\bin\cmake\win\x64\bin\cmake.exe -E rm -f
+RM = "E:\Rider Ides\CLion\bin\cmake\win\x64\bin\cmake.exe" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = D:\dev\PeaProject\TspFirstPart
+CMAKE_SOURCE_DIR = E:\C-Projects\PeaProject\TspFirstPart
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = D:\dev\PeaProject\TspFirstPart\cmake-build-debug
+CMAKE_BINARY_DIR = E:\C-Projects\PeaProject\TspFirstPart\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -67,7 +67,7 @@ CMAKE_BINARY_DIR = D:\dev\PeaProject\TspFirstPart\cmake-build-debug
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "No interactive CMake dialog available..."
-	C:\Users\qwere\AppData\Local\Programs\CLion\bin\cmake\win\x64\bin\cmake.exe -E echo "No interactive CMake dialog available."
+	"E:\Rider Ides\CLion\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available."
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -77,7 +77,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake to regenerate build system..."
-	C:\Users\qwere\AppData\Local\Programs\CLion\bin\cmake\win\x64\bin\cmake.exe --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	"E:\Rider Ides\CLion\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -86,9 +86,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\dev\PeaProject\TspFirstPart\cmake-build-debug\CMakeFiles D:\dev\PeaProject\TspFirstPart\cmake-build-debug\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start E:\C-Projects\PeaProject\TspFirstPart\cmake-build-debug\CMakeFiles E:\C-Projects\PeaProject\TspFirstPart\cmake-build-debug\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start D:\dev\PeaProject\TspFirstPart\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start E:\C-Projects\PeaProject\TspFirstPart\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -200,6 +200,54 @@ Graph/SymmetricalGraph.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\TspFirstPart.dir\build.make CMakeFiles/TspFirstPart.dir/Graph/SymmetricalGraph.cpp.s
 .PHONY : Graph/SymmetricalGraph.cpp.s
 
+TspAlgobase/BruteForce/TspBruteForce.obj: TspAlgobase/BruteForce/TspBruteForce.cpp.obj
+.PHONY : TspAlgobase/BruteForce/TspBruteForce.obj
+
+# target to build an object file
+TspAlgobase/BruteForce/TspBruteForce.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TspFirstPart.dir\build.make CMakeFiles/TspFirstPart.dir/TspAlgobase/BruteForce/TspBruteForce.cpp.obj
+.PHONY : TspAlgobase/BruteForce/TspBruteForce.cpp.obj
+
+TspAlgobase/BruteForce/TspBruteForce.i: TspAlgobase/BruteForce/TspBruteForce.cpp.i
+.PHONY : TspAlgobase/BruteForce/TspBruteForce.i
+
+# target to preprocess a source file
+TspAlgobase/BruteForce/TspBruteForce.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TspFirstPart.dir\build.make CMakeFiles/TspFirstPart.dir/TspAlgobase/BruteForce/TspBruteForce.cpp.i
+.PHONY : TspAlgobase/BruteForce/TspBruteForce.cpp.i
+
+TspAlgobase/BruteForce/TspBruteForce.s: TspAlgobase/BruteForce/TspBruteForce.cpp.s
+.PHONY : TspAlgobase/BruteForce/TspBruteForce.s
+
+# target to generate assembly for a file
+TspAlgobase/BruteForce/TspBruteForce.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TspFirstPart.dir\build.make CMakeFiles/TspFirstPart.dir/TspAlgobase/BruteForce/TspBruteForce.cpp.s
+.PHONY : TspAlgobase/BruteForce/TspBruteForce.cpp.s
+
+TspAlgobase/NearestNeighbour/TspNearestNeighbour.obj: TspAlgobase/NearestNeighbour/TspNearestNeighbour.cpp.obj
+.PHONY : TspAlgobase/NearestNeighbour/TspNearestNeighbour.obj
+
+# target to build an object file
+TspAlgobase/NearestNeighbour/TspNearestNeighbour.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TspFirstPart.dir\build.make CMakeFiles/TspFirstPart.dir/TspAlgobase/NearestNeighbour/TspNearestNeighbour.cpp.obj
+.PHONY : TspAlgobase/NearestNeighbour/TspNearestNeighbour.cpp.obj
+
+TspAlgobase/NearestNeighbour/TspNearestNeighbour.i: TspAlgobase/NearestNeighbour/TspNearestNeighbour.cpp.i
+.PHONY : TspAlgobase/NearestNeighbour/TspNearestNeighbour.i
+
+# target to preprocess a source file
+TspAlgobase/NearestNeighbour/TspNearestNeighbour.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TspFirstPart.dir\build.make CMakeFiles/TspFirstPart.dir/TspAlgobase/NearestNeighbour/TspNearestNeighbour.cpp.i
+.PHONY : TspAlgobase/NearestNeighbour/TspNearestNeighbour.cpp.i
+
+TspAlgobase/NearestNeighbour/TspNearestNeighbour.s: TspAlgobase/NearestNeighbour/TspNearestNeighbour.cpp.s
+.PHONY : TspAlgobase/NearestNeighbour/TspNearestNeighbour.s
+
+# target to generate assembly for a file
+TspAlgobase/NearestNeighbour/TspNearestNeighbour.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TspFirstPart.dir\build.make CMakeFiles/TspFirstPart.dir/TspAlgobase/NearestNeighbour/TspNearestNeighbour.cpp.s
+.PHONY : TspAlgobase/NearestNeighbour/TspNearestNeighbour.cpp.s
+
 TspAlgobase/TspAlgoBase.obj: TspAlgobase/TspAlgoBase.cpp.obj
 .PHONY : TspAlgobase/TspAlgoBase.obj
 
@@ -266,6 +314,12 @@ help:
 	@echo ... Graph/SymmetricalGraph.obj
 	@echo ... Graph/SymmetricalGraph.i
 	@echo ... Graph/SymmetricalGraph.s
+	@echo ... TspAlgobase/BruteForce/TspBruteForce.obj
+	@echo ... TspAlgobase/BruteForce/TspBruteForce.i
+	@echo ... TspAlgobase/BruteForce/TspBruteForce.s
+	@echo ... TspAlgobase/NearestNeighbour/TspNearestNeighbour.obj
+	@echo ... TspAlgobase/NearestNeighbour/TspNearestNeighbour.i
+	@echo ... TspAlgobase/NearestNeighbour/TspNearestNeighbour.s
 	@echo ... TspAlgobase/TspAlgoBase.obj
 	@echo ... TspAlgobase/TspAlgoBase.i
 	@echo ... TspAlgobase/TspAlgoBase.s

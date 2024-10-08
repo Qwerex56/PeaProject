@@ -11,5 +11,9 @@ add_executable(TspFirstPart main.cpp
         Graph/AsymmetricalGraph.cpp
         Graph/AsymmetricalGraph.h
         TspAlgobase/TspAlgoBase.cpp
-        TspAlgobase/TspAlgoBase.h)
+        TspAlgobase/TspAlgoBase.h
+        TspAlgobase/BruteForce/TspBruteForce.cpp
+        TspAlgobase/BruteForce/TspBruteForce.h
+        TspAlgobase/NearestNeighbour/TspNearestNeighbour.cpp
+        TspAlgobase/NearestNeighbour/TspNearestNeighbour.h)
 

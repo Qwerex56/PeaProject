@@ -15,7 +15,7 @@ std::string Graph::GetComment() {
   return conf_["COMMENT"];
 }
 
-int Graph::GetDimension() {
+int const Graph::GetDimension() {
   return std::stoi(conf_["DIMENSION"]);
 }
 

@@ -4,7 +4,6 @@
 
 #include "TspAlgoBase.h"
 
-namespace pea_tsp {
-namespace algo {
+namespace pea_tsp::algo {
 } // algo
-} // pea_tsp
+// pea_tsp

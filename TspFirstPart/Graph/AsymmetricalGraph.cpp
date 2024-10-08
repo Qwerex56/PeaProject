@@ -26,7 +26,7 @@ AsymmetricalGraph::AsymmetricalGraph(const std::string &path) {
       std::stringstream str_stream{line};
       std::string token;
       std::vector<std::string> tokens;
-      tokens.reserve(GetDimension());
+      tokens.reserve(4);
 
       while (std::getline(str_stream, token, ':')) {
         tokens.emplace_back(token);
@@ -44,22 +44,23 @@ AsymmetricalGraph::AsymmetricalGraph(const std::string &path) {
     std::string token;
     std::vector<std::string> tokens;
 
-    tokens.reserve(GetDimension());
+    tokens.reserve(GetDimension() + 1);
 
-    for (auto i = 0; i < GetDimension();) {
-      std::getline(file, line, ' ');
+    for (auto i = 1; i <= GetDimension();) {
+      std::getline(file, line);
 
       std::stringstream str_stream{line};
 
       while (std::getline(str_stream, token, ' ')) {
+        if (token.empty()) continue;
         tokens.emplace_back(token);
       }
 
       if (tokens.size() < GetDimension()) {
         continue;
       } else {
-        for (int j = 0; j < tokens.size(); ++j) {
-          AddPoint(i, j, std::stoi(tokens[j]));
+        for (int j = 1; j <= tokens.size(); ++j) {
+          AddPoint(i, j, std::stoi(tokens[j - 1]));
         }
 
         ++i;
@@ -73,9 +74,10 @@ AsymmetricalGraph::AsymmetricalGraph(const std::string &path) {
 Graph &AsymmetricalGraph::AddPoint(int point_id, int to_point, int weight) {
   if (!points.contains(point_id)) {
     points[point_id] = {};
+    points[point_id].reserve(GetDimension() + 1);
   }
 
-  if (point_id == to_point || weight == -1 || weight == 9999) {
+  if (point_id == to_point || weight == -1 || weight == 9999 || weight == 0) {
     weight = -1;
   }
 
