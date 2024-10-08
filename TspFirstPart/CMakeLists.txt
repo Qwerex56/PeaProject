@@ -9,5 +9,7 @@ add_executable(TspFirstPart main.cpp
         Graph/SymmetricalGraph.cpp
         Graph/SymmetricalGraph.h
         Graph/AsymmetricalGraph.cpp
-        Graph/AsymmetricalGraph.h)
+        Graph/AsymmetricalGraph.h
+        TspAlgobase/TspAlgoBase.cpp
+        TspAlgobase/TspAlgoBase.h)
 

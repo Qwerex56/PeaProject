@@ -1,6 +1,12 @@
 #include <iostream>
 
+#include "./Graph/SymmetricalGraph.h"
+
 int main() {
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
+  auto graph = pea_tsp::SymmetricalGraph{R"(D:\dev\PeaProject\att48.tsp)"};
+
+  graph.GetPoint(12);
+
+  std::cout << graph;
+  return 0;
 }

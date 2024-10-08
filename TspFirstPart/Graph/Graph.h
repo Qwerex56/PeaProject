@@ -7,31 +7,50 @@
 
 #include <string>
 #include <vector>
+#include <unordered_map>
+#include <variant>
 
 namespace pea_tsp {
 
-    class Graph {
-    public:
-        virtual ~Graph() = 0;
+enum class GraphConf {
+  Name,
+  Comment,
+  Type,
+  Dimension,
+  EdgeWeightType,
+};
 
-        virtual Graph& AddPoint(int point_id, int to_point_id, int weight) = 0;
-        virtual Graph& RemovePoint(int point_id) = 0;
+enum class GraphType {
+  TSP = 1 << 0,
+  ATSP = 1 << 1,
+  TOUR = 1 << 2,
+  UNKNOWN = 1 << 31
+};
 
-        virtual Graph& ClearGraph() = 0;
+class Graph {
+ public:
+  virtual ~Graph() = default;
 
-        std::string GetName();
-        std::string GetComment();
-        virtual int GetDimension() = 0;
-        virtual std::tuple<int, std::vector<int>> GetPoint() = 0;
+  virtual Graph &AddPoint(int point_id, int to_point_id, int weight) = 0;
+  virtual Graph &ClearGraph() = 0;
 
-    protected:
-        std::string name;
-        std::string comment;
+//  virtual Graph &RemovePoint(int point_id) = 0;
 
-    private:
-        virtual void ReadGraphFromFile(std::string path) = 0;
-        virtual void ReadGraphFromFile(std::fstream file_path) = 0;
-    };
+  std::string GetName();
+  std::string GetComment();
+  int GetDimension();
+
+  virtual std::tuple<int, std::vector<int>> GetPoint(const int &point_id) = 0;
+
+ protected:
+  std::unordered_map<std::string, std::string> conf_;
+  GraphType type_ = GraphType::UNKNOWN;
+
+  void SetName(std::string name);
+  void SetComment(std::string comment);
+  void SetDimension(int dimension);
+  void SetDimension(std::string dimension);
+};
 
 } // pea_tsp
 

@@ -5,24 +5,28 @@
 #ifndef TSPFIRSTPART_SYMMETRICALGRAPH_H
 #define TSPFIRSTPART_SYMMETRICALGRAPH_H
 
+#include <map>
+
 #include "Graph.h"
 
 namespace pea_tsp {
+class SymmetricalGraph final : public Graph {
+ public:
+  SymmetricalGraph() = default;
+  explicit SymmetricalGraph(const std::string &path);
 
-    class SymmetricalGraph : public pea_tsp::Graph {
-    public:
-        Graph& AddPoint(int point_id, int to_point_id, int weight) override;
-        Graph& RemovePoint(int point_id) override;
+  ~SymmetricalGraph() override = default;
 
-        Graph& ClearGraph() override;
+  Graph &AddPoint(int point_id, int coordinate_x, int coordinate_y) override;
 
-        int GetDimension() override;
-        std::tuple<int, std::vector<int>> GetPoint() override;
-    private:
-        virtual void ReadGraphFromFile(std::string path) override;
-        virtual void ReadGraphFromFile(std::fstream file_path) override;
-    };
+  Graph &ClearGraph() override;
 
+  std::tuple<int, std::vector<int> > GetPoint(const int &point_id) override;
+
+  friend std::ostream &operator<<(std::ostream &os, SymmetricalGraph &g);
+ private:
+  std::map<int, std::vector<int>> points;
+};
 } // pea_tsp
 
 #endif //TSPFIRSTPART_SYMMETRICALGRAPH_H
