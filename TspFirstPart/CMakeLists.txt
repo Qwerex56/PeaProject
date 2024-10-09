@@ -15,5 +15,7 @@ add_executable(TspFirstPart main.cpp
         TspAlgobase/BruteForce/TspBruteForce.cpp
         TspAlgobase/BruteForce/TspBruteForce.h
         TspAlgobase/NearestNeighbour/TspNearestNeighbour.cpp
-        TspAlgobase/NearestNeighbour/TspNearestNeighbour.h)
+        TspAlgobase/NearestNeighbour/TspNearestNeighbour.h
+        TspAlgobase/DfsBruteForce/DfsBruteForce.cpp
+        TspAlgobase/DfsBruteForce/DfsBruteForce.h)
 

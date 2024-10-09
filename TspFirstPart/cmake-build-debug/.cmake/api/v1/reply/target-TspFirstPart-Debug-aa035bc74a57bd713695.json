@@ -58,7 +58,8 @@
 				5,
 				7,
 				9,
-				11
+				11,
+				13
 			]
 		}
 	],
@@ -101,7 +102,8 @@
 				5,
 				7,
 				9,
-				11
+				11,
+				13
 			]
 		},
 		{
@@ -113,7 +115,8 @@
 				6,
 				8,
 				10,
-				12
+				12,
+				14
 			]
 		}
 	],
@@ -189,6 +192,17 @@
 		{
 			"backtrace" : 1,
 			"path" : "TspAlgobase/NearestNeighbour/TspNearestNeighbour.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "TspAlgobase/DfsBruteForce/DfsBruteForce.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "TspAlgobase/DfsBruteForce/DfsBruteForce.h",
 			"sourceGroupIndex" : 1
 		}
 	],

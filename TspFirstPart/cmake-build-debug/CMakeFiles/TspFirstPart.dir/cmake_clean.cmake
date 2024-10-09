@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/TspFirstPart.dir/Graph/SymmetricalGraph.cpp.obj.d"
   "CMakeFiles/TspFirstPart.dir/TspAlgobase/BruteForce/TspBruteForce.cpp.obj"
   "CMakeFiles/TspFirstPart.dir/TspAlgobase/BruteForce/TspBruteForce.cpp.obj.d"
+  "CMakeFiles/TspFirstPart.dir/TspAlgobase/DfsBruteForce/DfsBruteForce.cpp.obj"
+  "CMakeFiles/TspFirstPart.dir/TspAlgobase/DfsBruteForce/DfsBruteForce.cpp.obj.d"
   "CMakeFiles/TspFirstPart.dir/TspAlgobase/NearestNeighbour/TspNearestNeighbour.cpp.obj"
   "CMakeFiles/TspFirstPart.dir/TspAlgobase/NearestNeighbour/TspNearestNeighbour.cpp.obj.d"
   "CMakeFiles/TspFirstPart.dir/TspAlgobase/TspAlgoBase.cpp.obj"
