@@ -7,7 +7,7 @@
 
 int main() {
   auto graph = pea_tsp::SymmetricalGraph{R"(E:\C-Projects\PeaProject\att4.tsp)"};
-  auto agraph = pea_tsp::AsymmetricalGraph(R"(E:\C-Projects\PeaProject\br4.atsp)");
+  auto agraph = pea_tsp::AsymmetricalGraph(R"(D:\dev\PeaProject\br4.atsp)");
 
   auto bf = pea_tsp::algo::TspBruteForce();
   auto nn = pea_tsp::algo::TspNearestNeighbour();

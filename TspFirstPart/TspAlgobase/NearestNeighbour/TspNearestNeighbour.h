@@ -16,7 +16,7 @@ class TspNearestNeighbour : public TspAlgoBase {
 
  private:
   // returns id of the minimum element, not value
-  static const size_t MinElementId(const std::vector<int> &elements, const std::vector<int> &visited);
+  static size_t MinElementId(const std::vector<int> &elements, const std::vector<int> &visited);
 };
 
 } // algo

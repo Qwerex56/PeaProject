@@ -19,50 +19,52 @@ std::vector<int> TspNearestNeighbour::FindSolution(Graph &graph) {
     auto current_path_weight = 0;
 
     // Add all unvisited vertices
-    auto vertices = std::vector<int>{};
-    for (auto v = 1; v <= graph.GetDimension(); ++v) {
-      if (v == start_point) continue;
-      vertices.emplace_back(v);
-    }
+    auto vertices = CreateVerticesVector(graph.GetDimension(), start_point);
 
     do {
       auto connections = std::get<1>(graph.GetPoint(current_path.back()));
       auto min_connection_id = MinElementId(connections, current_path);
 
-      current_path.emplace_back(min_connection_id);
-      vertices.erase(std::remove_if(vertices.begin(), vertices.end(), [&](const auto &item) {
-        return item == min_connection_id;
-      }), vertices.end());
+      if (min_connection_id == -1) {
+        current_path_weight = INT_MAX;
+        break;
+      }
 
+      current_path.emplace_back(min_connection_id);
+
+      // visited nodes are deleted from vertices
+      vertices.erase(std::remove_if(vertices.begin(), vertices.end(),
+                                    [&](const auto &item) {
+                                      return item == min_connection_id;
+                                    }), vertices.end());
+
+      current_path_weight += connections[min_connection_id - 1];
     } while (!vertices.empty());
 
-    current_path.emplace_back(start_point);
-    auto last_id = start_point;
-    for (auto const &vertex_id : current_path) {
-      current_path_weight += std::get<1>(graph.GetPoint(last_id))[vertex_id - 1];
-      last_id = vertex_id;
-    }
-
     if (current_path_weight < min_path_weight) {
+      auto end_connection = std::get<1>(graph.GetPoint(current_path.back()))[start_point - 1];
+      current_path_weight += end_connection;
+
       min_path_weight = current_path_weight;
       min_path_tour = current_path;
     }
   }
 
-  return std::vector<int>();
+  return min_path_tour;
 }
 
-const size_t TspNearestNeighbour::MinElementId(const std::vector<int> &elements, const std::vector<int> &visited) {
+size_t TspNearestNeighbour::MinElementId(const std::vector<int> &elements, const std::vector<int> &visited) {
   if (elements.begin() == elements.end()) return *elements.begin();
 
   auto smallest = INT_MAX;
-  auto point_id = 0;
+  auto point_id = -1;
 
   for (auto i = 0; i < elements.size(); ++i) {
     if (elements[i] <= 0) continue;
-    if (elements[i] > smallest) continue;
+    // greater or greater/equal
+    if (elements[i] >= smallest) continue;
     if (std::any_of(visited.begin(), visited.end(),
-                    [&i](const int &item){return item == (i + 1);}))
+                    [&i](const auto &item) { return item == (i + 1); }))
       continue;
 
     smallest = elements[i];

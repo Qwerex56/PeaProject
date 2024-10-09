@@ -21,6 +21,11 @@ class TspAlgoBase {
   int repeat_ = -1; // -1 = runs until best solution
 
   bool do_show_progress = true;
+
+  std::vector<int> CreateVerticesVector(int vertices_count, int start_point);
+
+  // Test for all point connectivity
+  bool IsPathTraversable(const std::vector<int> &path, Graph &graph) const;
 };
 
 } // algo

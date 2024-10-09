@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "E:/C-Projects/PeaProject/TspFirstPart/cmake-build-debug",
-		"source" : "E:/C-Projects/PeaProject/TspFirstPart"
+		"build" : "D:/dev/PeaProject/TspFirstPart/cmake-build-debug",
+		"source" : "D:/dev/PeaProject/TspFirstPart"
 	},
 	"version" : 
 	{
