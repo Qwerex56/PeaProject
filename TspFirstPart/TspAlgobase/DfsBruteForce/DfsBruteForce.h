@@ -10,10 +10,16 @@ namespace pea_tsp::algo {
 
 class DfsBruteForce : public TspAlgoBase {
  public:
+  DfsBruteForce() = default;
+  explicit DfsBruteForce(const std::string &conf_path);
+
+  std::vector<int> FindSolution() final {
+    if (!graph_) return {};
+
+    return FindSolution(*graph_);
+  }
+
   std::vector<int> FindSolution(Graph &graph) final;
-
- private:
-
 };
 
 } // algo

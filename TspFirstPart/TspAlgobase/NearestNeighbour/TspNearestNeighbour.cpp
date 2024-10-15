@@ -5,55 +5,67 @@
 #include "TspNearestNeighbour.h"
 
 #include <algorithm>
+#include <stack>
 
 namespace pea_tsp::algo {
-std::vector<int> TspNearestNeighbour::FindSolution(Graph &graph) {
-  auto min_path_weight = upper_bound_;
-  std::vector<int> min_path_tour = {};
+[[maybe_unused]] TspNearestNeighbour::TspNearestNeighbour(const std::string &conf_path) : TspAlgoBase(conf_path) { }
 
-  auto path_counter = 1;
-  auto possible_paths_count = graph.GetDimension();
+std::vector<int> TspNearestNeighbour::FindSolution(Graph &graph) {
+  auto path_weight = INT_MAX;
+  auto path_tour = std::vector<int>{};
 
   for (auto start_point = 1; start_point <= graph.GetDimension(); ++start_point) {
-    auto current_path = std::vector<int>{start_point};
-    auto current_path_weight = 0;
+    std::stack<std::pair<int, int>> path_stack{};
 
-    // Add all unvisited vertices
-    auto vertices = CreateVerticesVector(graph.GetDimension(), start_point);
+    int current_depth = 1;
+    std::vector<int> current_path{};
 
-    do {
-      auto connections = std::get<1>(graph.GetPoint(current_path.back()));
-      auto min_connection_id = MinElementId(connections, current_path);
+    path_stack.emplace(start_point, current_depth);
 
-      if (min_connection_id == -1) {
-        current_path_weight = INT_MAX;
-        break;
+    while (!path_stack.empty()) {
+      auto current_point = path_stack.top();
+      path_stack.pop();
+
+      // Check depth
+      if (current_path.size() > current_point.second) {
+        current_path.erase(current_path.begin() + (current_point.second - 1), current_path.end());
+        current_depth = current_point.second + 1;
       }
 
-      current_path.emplace_back(min_connection_id);
+      current_path.emplace_back(current_point.first);
 
-      // visited nodes are deleted from vertices
-      vertices.erase(std::remove_if(vertices.begin(), vertices.end(),
-                                    [&](const auto &item) {
-                                      return item == min_connection_id;
-                                    }), vertices.end());
+      auto nearest_neighbours = MinElementIds(
+          std::get<1>(graph.GetPoint(current_point.first)),
+          current_path);
 
-      current_path_weight += connections[min_connection_id - 1];
-    } while (!vertices.empty());
+      for (auto const &neighbour : nearest_neighbours) {
+        path_stack.emplace(neighbour, current_depth);
+      }
 
-    if (current_path_weight < min_path_weight) {
-      auto end_connection = std::get<1>(graph.GetPoint(current_path.back()))[start_point - 1];
-      current_path_weight += end_connection;
+      ++current_depth;
 
-      min_path_weight = current_path_weight;
-      min_path_tour = current_path;
+      if (current_depth >= graph.GetDimension() + 2) {
+        current_path.emplace_back(start_point);
+
+        auto current_path_weight = 0;
+        for (auto item = 0; item < current_path.size() - 1; ++item) {
+          auto travel_weight = graph.GetTravelWeight(current_path[item], current_path[item + 1]);
+
+          current_path_weight += travel_weight;
+        }
+
+        if (current_path_weight < path_weight) {
+          path_weight = current_path_weight;
+          path_tour = current_path;
+        }
+      }
     }
   }
 
-  return min_path_tour;
+  return path_tour;
 }
 
-size_t TspNearestNeighbour::MinElementId(const std::vector<int> &elements, const std::vector<int> &visited) {
+[[maybe_unused]] size_t TspNearestNeighbour::MinElementId(const std::vector<int> &elements, const std::vector<int> &visited) {
   if (elements.begin() == elements.end()) return *elements.begin();
 
   auto smallest = INT_MAX;
@@ -61,7 +73,6 @@ size_t TspNearestNeighbour::MinElementId(const std::vector<int> &elements, const
 
   for (auto i = 0; i < elements.size(); ++i) {
     if (elements[i] <= 0) continue;
-    // greater or greater/equal
     if (elements[i] >= smallest) continue;
     if (std::any_of(visited.begin(), visited.end(),
                     [&i](const auto &item) { return item == (i + 1); }))
@@ -72,6 +83,33 @@ size_t TspNearestNeighbour::MinElementId(const std::vector<int> &elements, const
   }
 
   return point_id;
+}
+
+std::vector<int> TspNearestNeighbour::MinElementIds(const std::vector<int> &elements,
+                                                    const std::vector<int> &visited) {
+  if (elements.begin() == elements.end()) return {elements.front()};
+
+  auto smallest = INT_MAX;
+  auto points_ids = std::vector<int>{};
+
+  for (auto i = 0; i < elements.size(); ++i) {
+    if (elements[i] <= 0) continue;
+    if (elements[i] > smallest) continue;
+    if (std::any_of(visited.begin(), visited.end(),
+                    [&i](const auto &item) { return item == (i + 1); }))
+      continue;
+
+    if (elements[i] == smallest) {
+      points_ids.emplace_back(i + 1);
+
+      continue;
+    }
+
+    smallest = elements[i];
+    points_ids = {};
+  }
+
+  return points_ids;
 }
 } // algo
 // pea_tsp

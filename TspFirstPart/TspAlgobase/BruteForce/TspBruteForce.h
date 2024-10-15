@@ -8,16 +8,18 @@
 #include "../TspAlgoBase.h"
 namespace pea_tsp::algo {
 
-class TspBruteForce : public TspAlgoBase {
+class [[maybe_unused]] TspBruteForce : public TspAlgoBase {
  public:
   TspBruteForce() = default;
+  [[maybe_unused]] explicit TspBruteForce(const std::string &conf_path);
 
-//  TspBruteForce(std::map<std::string, std::string> conf);
-//  TspBruteForce(const std::string &confFilePath);
+  std::vector<int> FindSolution() final {
+    if (!graph_) return {};
+
+    return FindSolution(*graph_);
+  }
 
   std::vector<int> FindSolution(Graph &graph) final;
-
- private:
 };
 } // algo
 // pea_tsp

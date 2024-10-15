@@ -8,8 +8,12 @@
 #include "TspBruteForce.h"
 
 namespace pea_tsp::algo {
+[[maybe_unused]] TspBruteForce::TspBruteForce(const std::string &conf_path) : TspAlgoBase(conf_path) {
+
+}
+
 std::vector<int> TspBruteForce::FindSolution(Graph &graph) {
-  auto min_path_weight = upper_bound_;
+  auto min_path_weight = INT_MAX;
   std::vector<int> min_path_tour = {};
 
   std::vector<int> vertices;
@@ -57,7 +61,7 @@ std::vector<int> TspBruteForce::FindSolution(Graph &graph) {
 
       vertices.pop_back();
 
-      if (do_show_progress) {
+      if (do_show_progress_) {
         std::cout << "Done path: " << path_counter++ << "\t of: " << possible_paths_count << std::endl;
       }
     } while (std::next_permutation(vertices.begin(), vertices.end()));

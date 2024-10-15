@@ -12,20 +12,24 @@ namespace pea_tsp::algo {
 
 class TspAlgoBase {
  public:
+  TspAlgoBase() = default;
+  explicit TspAlgoBase(const std::string &conf_path);
+
+  virtual std::vector<int> FindSolution() = 0;
   virtual std::vector<int> FindSolution(Graph &graph) = 0;
 
  protected:
-  std::map<std::string, std::string> conf_;
+  std::string graph_path_;
+  bool do_show_progress_ = true;
+  // Should be an enum
+  bool is_symmetrical_ = false;
 
-  int upper_bound_ = INT_MAX;
-  int repeat_ = -1; // -1 = runs until best solution
+  Graph *graph_ = nullptr;
 
-  bool do_show_progress = true;
-
-  std::vector<int> CreateVerticesVector(int vertices_count, int start_point);
+  static std::vector<int> CreateVerticesVector(int vertices_count, int start_point);
 
   // Test for all point connectivity
-  bool IsPathTraversable(const std::vector<int> &path, Graph &graph) const;
+  static bool IsPathTraversable(const std::vector<int> &path, Graph &graph) ;
 };
 
 } // algo

@@ -8,15 +8,25 @@
 #include "../TspAlgoBase.h"
 namespace pea_tsp::algo {
 
-class TspNearestNeighbour : public TspAlgoBase {
+class [[maybe_unused]] TspNearestNeighbour : public TspAlgoBase {
  public:
-  std::vector<int> FindSolution(Graph &graph) final;
+  TspNearestNeighbour() = default;
+  [[maybe_unused]] explicit TspNearestNeighbour(const std::string &conf_path);
 
- protected:
+  std::vector<int> FindSolution() final {
+    if (!graph_) return {};
+
+    return FindSolution(*graph_);
+  }
+
+  std::vector<int> FindSolution(Graph &graph) final;
 
  private:
   // returns id of the minimum element, not value
-  static size_t MinElementId(const std::vector<int> &elements, const std::vector<int> &visited);
+  [[maybe_unused]] static size_t MinElementId(const std::vector<int> &elements, const std::vector<int> &visited);
+
+  // returns ids of the minimum elements
+  static std::vector<int> MinElementIds(const std::vector<int> &elements, const std::vector<int> &visited);
 };
 
 } // algo

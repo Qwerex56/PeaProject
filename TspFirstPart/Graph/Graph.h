@@ -12,38 +12,20 @@
 
 namespace pea_tsp {
 
-enum class GraphConf {
-  Name,
-  Comment,
-  Type,
-  Dimension,
-  EdgeWeightType,
-};
-
-enum class GraphType {
-  TSP = 1 << 0,
-  ATSP = 1 << 1,
-  UNKNOWN = 1 << 31
-};
-
 class Graph {
  public:
   virtual ~Graph() = default;
 
   virtual Graph &AddPoint(int point_id, int to_point_id, int weight) = 0;
-  virtual Graph &ClearGraph() = 0;
-
-//  virtual Graph &RemovePoint(int point_id) = 0;
 
   std::string GetName();
   std::string GetComment();
-  const int GetDimension();
+  int GetDimension();
 
   virtual std::tuple<int, std::vector<int>> GetPoint(const int &point_id) = 0;
-
+  int GetTravelWeight(int from_id, int to_id);
  protected:
   std::unordered_map<std::string, std::string> conf_;
-  GraphType type_ = GraphType::UNKNOWN;
 
   void SetName(std::string name);
   void SetComment(std::string comment);

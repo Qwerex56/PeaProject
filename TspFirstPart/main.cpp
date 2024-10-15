@@ -1,20 +1,13 @@
 #include <iostream>
 
 #include "./Graph/SymmetricalGraph.h"
-#include "Graph/AsymmetricalGraph.h"
 #include "TspAlgobase/BruteForce/TspBruteForce.h"
-#include "TspAlgobase/NearestNeighbour/TspNearestNeighbour.h"
 #include "TspAlgobase/DfsBruteForce/DfsBruteForce.h"
 
 int main() {
-  auto graph = pea_tsp::SymmetricalGraph{R"(E:\C-Projects\PeaProject\att4.tsp)"};
-  auto agraph = pea_tsp::AsymmetricalGraph(R"(D:\dev\PeaProject\br4.atsp)");
+  auto dfs_bb = pea_tsp::algo::DfsBruteForce(R"(E:\C-Projects\PeaProject\config.txt)");
 
-  auto bf = pea_tsp::algo::TspBruteForce();
-  auto nn = pea_tsp::algo::TspNearestNeighbour();
-  auto dfs_bb = pea_tsp::algo::DfsBruteForce();
-
-  auto solution = dfs_bb.FindSolution(agraph);
+  auto solution = dfs_bb.FindSolution();
 
   for (auto const &point : solution) {
     std::cout << point << " -> ";

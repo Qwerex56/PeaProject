@@ -19,8 +19,6 @@ class SymmetricalGraph final : public Graph {
 
   Graph &AddPoint(int point_id, int coordinate_x, int coordinate_y) override;
 
-  Graph &ClearGraph() override;
-
   std::tuple<int, std::vector<int> > GetPoint(const int &point_id) override;
 
   friend std::ostream &operator<<(std::ostream &os, SymmetricalGraph &g);

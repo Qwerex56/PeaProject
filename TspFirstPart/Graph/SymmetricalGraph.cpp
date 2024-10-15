@@ -6,7 +6,6 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
-#include <algorithm>
 #include <valarray>
 
 #include "SymmetricalGraph.h"
@@ -85,13 +84,6 @@ SymmetricalGraph::SymmetricalGraph(const std::string &path) {
 
 Graph &SymmetricalGraph::AddPoint(int point_id, int coordinate_x, int coordinate_y) {
   points[point_id] = {coordinate_x, coordinate_y};
-
-  return *this;
-}
-
-Graph &SymmetricalGraph::ClearGraph() {
-  points.erase(points.cbegin(), points.cend());
-  points.clear();
 
   return *this;
 }

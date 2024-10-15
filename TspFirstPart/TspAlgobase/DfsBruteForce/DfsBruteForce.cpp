@@ -4,10 +4,11 @@
 
 #include <stack>
 #include <algorithm>
-#include <iostream>
 #include "DfsBruteForce.h"
 
 namespace pea_tsp::algo {
+DfsBruteForce::DfsBruteForce(const std::string &conf_path) : TspAlgoBase(conf_path) { }
+
 std::vector<int> DfsBruteForce::FindSolution(Graph &graph) {
   auto path_id = 1;
   auto path_weight = INT_MAX;

@@ -86,12 +86,6 @@ Graph &AsymmetricalGraph::AddPoint(int point_id, int to_point, int weight) {
   return *this;
 }
 
-Graph &AsymmetricalGraph::ClearGraph() {
-  points = {};
-
-  return *this;
-}
-
 std::tuple<int, std::vector<int>> AsymmetricalGraph::GetPoint(const int &point_id) {
   if (!points.contains(point_id)) {
     return {-1, {}};
