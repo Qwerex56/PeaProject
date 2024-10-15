@@ -4,6 +4,7 @@
 #include "Graph/AsymmetricalGraph.h"
 #include "TspAlgobase/BruteForce/TspBruteForce.h"
 #include "TspAlgobase/NearestNeighbour/TspNearestNeighbour.h"
+#include "TspAlgobase/DfsBruteForce/DfsBruteForce.h"
 
 int main() {
   auto graph = pea_tsp::SymmetricalGraph{R"(E:\C-Projects\PeaProject\att4.tsp)"};
@@ -11,8 +12,9 @@ int main() {
 
   auto bf = pea_tsp::algo::TspBruteForce();
   auto nn = pea_tsp::algo::TspNearestNeighbour();
+  auto dfs_bb = pea_tsp::algo::DfsBruteForce();
 
-  auto solution = nn.FindSolution(agraph);
+  auto solution = dfs_bb.FindSolution(agraph);
 
   for (auto const &point : solution) {
     std::cout << point << " -> ";

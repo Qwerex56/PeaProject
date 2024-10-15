@@ -1,3 +1,3 @@
-"E:\Rider Ides\CLion\bin\cmake\win\x64\bin\cmake.exe" -E rm -f CMakeFiles\TspFirstPart.dir/objects.a
-"E:\Rider Ides\CLion\bin\mingw\bin\ar.exe" qc CMakeFiles\TspFirstPart.dir/objects.a @CMakeFiles\TspFirstPart.dir\objects1.rsp
-"E:\Rider Ides\CLion\bin\mingw\bin\g++.exe" -g -Wl,--whole-archive CMakeFiles\TspFirstPart.dir/objects.a -Wl,--no-whole-archive -o TspFirstPart.exe -Wl,--out-implib,libTspFirstPart.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\TspFirstPart.dir\linkLibs.rsp
+C:\Users\qwere\AppData\Local\Programs\CLion\bin\cmake\win\x64\bin\cmake.exe -E rm -f CMakeFiles\TspFirstPart.dir/objects.a
+C:\Users\qwere\AppData\Local\Programs\CLion\bin\mingw\bin\ar.exe qc CMakeFiles\TspFirstPart.dir/objects.a @CMakeFiles\TspFirstPart.dir\objects1.rsp
+C:\Users\qwere\AppData\Local\Programs\CLion\bin\mingw\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\TspFirstPart.dir/objects.a -Wl,--no-whole-archive -o TspFirstPart.exe -Wl,--out-implib,libTspFirstPart.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\TspFirstPart.dir\linkLibs.rsp
