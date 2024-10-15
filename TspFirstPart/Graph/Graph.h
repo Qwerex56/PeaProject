@@ -24,6 +24,7 @@ class Graph {
 
   virtual std::tuple<int, std::vector<int>> GetPoint(const int &point_id) = 0;
   int GetTravelWeight(int from_id, int to_id);
+  int GetPossiblePathCount();
  protected:
   std::unordered_map<std::string, std::string> conf_;
 

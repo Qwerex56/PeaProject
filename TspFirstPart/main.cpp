@@ -12,7 +12,6 @@ int main() {
   for (auto const &point : solution) {
     std::cout << point << " -> ";
   }
-  std::cout << solution[0];
 
   return 0;
 }

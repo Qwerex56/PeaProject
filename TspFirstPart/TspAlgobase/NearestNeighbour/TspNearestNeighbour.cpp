@@ -52,6 +52,11 @@ std::vector<int> TspNearestNeighbour::FindSolution(Graph &graph) {
           auto travel_weight = graph.GetTravelWeight(current_path[item], current_path[item + 1]);
 
           current_path_weight += travel_weight;
+
+          if (travel_weight <= 0) {
+            current_path_weight = INT_MAX;
+            break;
+          }
         }
 
         if (current_path_weight < path_weight) {

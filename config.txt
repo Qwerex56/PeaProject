@@ -1,4 +1,4 @@
 show_progress=0
-graph_path=E:\C-Projects\PeaProject\att4.tsp
-is_symmetrical=1
-graph_config=E:\C-Projects\PeaProject\att4.tsp
+graph_path=E:\C-Projects\PeaProject\br4.atsp
+is_symmetrical=0
+graph_config=E:\C-Projects\PeaProject\br4.atsp

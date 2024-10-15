@@ -29,7 +29,7 @@ class TspAlgoBase {
   static std::vector<int> CreateVerticesVector(int vertices_count, int start_point);
 
   // Test for all point connectivity
-  static bool IsPathTraversable(const std::vector<int> &path, Graph &graph) ;
+  static bool IsPathTraversable(const std::vector<int> &path, Graph &graph);
 };
 
 } // algo

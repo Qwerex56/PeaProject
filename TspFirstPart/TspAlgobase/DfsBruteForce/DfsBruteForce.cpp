@@ -4,6 +4,7 @@
 
 #include <stack>
 #include <algorithm>
+#include <iostream>
 #include "DfsBruteForce.h"
 
 namespace pea_tsp::algo {
@@ -62,12 +63,17 @@ std::vector<int> DfsBruteForce::FindSolution(Graph &graph) {
 
         auto current_path_weight = 0;
         for (auto item = 0; item < current_path.size() - 1; ++item) {
-          auto travel_weight = std::get<1>(graph.GetPoint(current_path[item]))[current_path[item + 1] - 1];
+          auto travel_weight = graph.GetTravelWeight(current_path[item], current_path[item + 1]);
+
+          if (travel_weight == -1) {
+            current_path_weight = INT_MAX;
+            break;
+          }
 
           current_path_weight += travel_weight;
         }
 
-        if (current_path_weight < path_weight) {
+        if (current_path_weight < path_weight && current_path_weight > 0) {
           path_weight = current_path_weight;
           path_tour = current_path;
         }
@@ -75,6 +81,7 @@ std::vector<int> DfsBruteForce::FindSolution(Graph &graph) {
     }
   }
 
+  std::cout << path_weight << std::endl;
   return path_tour;
 }
 } // algo

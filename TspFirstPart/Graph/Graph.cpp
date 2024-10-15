@@ -40,6 +40,21 @@ int Graph::GetTravelWeight(int from_id, int to_id) {
   if (from_id <= 0 || to_id <= 0) return -1;
   if (from_id > GetDimension() || to_id > GetDimension()) return -1;
 
-  return std::get<1>(GetPoint(from_id))[to_id];
+  return std::get<1>(GetPoint(from_id))[to_id - 1];
+}
+
+int Graph::GetPossiblePathCount() {
+  auto fact = [](int n){
+    if (n <= 0) return 1;
+
+    auto result = 1;
+    while (n > 0) {
+      result *= n--;
+    }
+
+    return result;
+  };
+
+  return fact(GetDimension());
 }
 } // pea_tsp

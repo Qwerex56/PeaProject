@@ -1,0 +1,2 @@
+"E:\Rider Ides\CLion\bin\mingw\bin\ar.exe" qc libTspLib.a CMakeFiles/TspLib.dir/Graph/Graph.cpp.obj
+"E:\Rider Ides\CLion\bin\mingw\bin\ranlib.exe" libTspLib.a
