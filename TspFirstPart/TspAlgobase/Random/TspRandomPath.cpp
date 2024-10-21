@@ -4,6 +4,8 @@
 
 #include <random>
 #include <algorithm>
+#include <chrono>
+#include <iostream>
 
 #include "TspRandomPath.h"
 
@@ -22,47 +24,58 @@ std::vector<int> TspRandomPath::FindSolution(Graph &graph) {
   std::mt19937 gen(rd());
   std::uniform_int_distribution<> distribution(1, graph.GetDimension());
 
+  const auto start_time{std::chrono::steady_clock::now()};
+  auto current_time{std::chrono::steady_clock::now()};
+
   auto path = std::vector<int>(graph.GetDimension());
-  auto paths = std::vector<std::vector<int>>();
   std::iota(path.begin(), path.end(), 1);
-
-  // TODO: make 3 a conf parameter
-  auto max_tries = graph.GetPossiblePathCount();
-
-  if (graph.GetDimension() >= 9) {
-    max_tries /= 3;
-  }
-  paths.reserve(max_tries);
 
   auto min_travel_weight = INT_MAX;
   auto min_path = std::vector<int>();
 
-  for (auto path_id = 0; path_id < max_tries; ++path_id) {
+  do {
+    // Close path
+    path.emplace_back(path[0]);
+
     auto current_path_weight = 0;
 
-    for (auto item = 0; item < graph.GetDimension() - 1; ++item) {
+    for (auto item = 0; item < graph.GetDimension(); ++item) {
       auto travel_weight = graph.GetTravelWeight(path[item], path[item + 1]);
 
-      if (travel_weight <= 0) break;
+      if (travel_weight <= 0) {
+        current_path_weight = -1;
+        break;
+      }
 
       current_path_weight += travel_weight;
     }
 
-    if (current_path_weight < min_travel_weight) {
+    if (current_path_weight < min_travel_weight && current_path_weight > 0) {
       min_travel_weight = current_path_weight;
       min_path = path;
     }
 
-    // Shuffle path
-    while (std::any_of(paths.begin(), paths.end(), [&path](auto &item) {
-      return std::equal(path.begin(), path.end(), item.begin(), item.end());
-    })) {
-      std::shuffle(path.begin(), path.end(), gen);
+    // delete duplicate vertex
+    path.pop_back();
+    std::shuffle(path.begin(), path.end(), gen);
+
+    current_time = std::chrono::steady_clock::now();
+
+    if (do_show_progress_
+        && std::chrono::duration_cast<std::chrono::milliseconds>(current_time - start_time).count() % 5000 == 0) {
+      std::cout << "Elapsed: " << std::chrono::duration_cast<std::chrono::seconds>(current_time - start_time).count()
+        << "s / " << max_time.count() << "s\n";
     }
 
-    paths.emplace_back(path);
-  }
+  } while (std::chrono::duration_cast<std::chrono::seconds>(current_time - start_time).count() < max_time.count());
 
+  const auto end{std::chrono::steady_clock::now()};
+  const std::chrono::duration<double> elapsed_seconds{end - start_time};
+
+  SaveToFile(min_path,
+             min_travel_weight,
+             elapsed_seconds.count(),
+             "TspRand-result.csv");
   return min_path;
 }
 

@@ -19,7 +19,7 @@ class AsymmetricalGraph : public pea_tsp::Graph {
 
   Graph &AddPoint(int point_id, int to_point, int weight) final;
 
-  std::tuple<int, std::vector<int>> GetPoint(const int &point_id) final;
+  std::tuple<int, std::vector<int>> GetPoint(const int &point_id) const final;
 
   friend std::ostream &operator<<(std::ostream &os, AsymmetricalGraph &g);
  private:

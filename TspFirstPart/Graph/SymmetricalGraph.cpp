@@ -88,16 +88,14 @@ Graph &SymmetricalGraph::AddPoint(int point_id, int coordinate_x, int coordinate
   return *this;
 }
 
-std::tuple<int, std::vector<int>> SymmetricalGraph::GetPoint(const int &point_id) {
+std::tuple<int, std::vector<int>> SymmetricalGraph::GetPoint(const int &point_id) const {
   if (!points.contains(point_id)) {
     return {-1, {}};
   }
 
-  auto point_x = points[point_id][0];
-  auto point_y = points[point_id][1];
-  auto arr = std::vector<int>();
-
-  arr.reserve(GetDimension());
+  auto point_x = points.at(point_id)[0];
+  auto point_y = points.at(point_id)[1];
+  auto arr = std::vector<int>(GetDimension());
 
   for (int i = 1; i <= points.size(); ++i) {
     if (point_id == i) {
@@ -105,8 +103,8 @@ std::tuple<int, std::vector<int>> SymmetricalGraph::GetPoint(const int &point_id
       continue;
     }
 
-    auto neighbour_x = points[i][0];
-    auto neighbour_y = points[i][1];
+    auto neighbour_x = points.at(i)[0];
+    auto neighbour_y = points.at(i)[1];
 
     auto length = std::sqrt(std::pow(neighbour_x - point_x, 2) + std::pow(neighbour_y - point_y, 2));
     arr.emplace_back(static_cast<int>(length));

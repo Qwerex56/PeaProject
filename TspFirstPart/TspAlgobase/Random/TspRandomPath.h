@@ -6,6 +6,7 @@
 #define TSPFIRSTPART_TSPALGOBASE_RANDOM_TSPRANDOMPATH_H_
 
 #include "../TspAlgoBase.h"
+#include <chrono>
 
 namespace pea_tsp::algo {
 
@@ -16,6 +17,9 @@ class TspRandomPath : public pea_tsp::algo::TspAlgoBase {
 
   std::vector<int> FindSolution() final;
   std::vector<int> FindSolution(Graph &graph) final;
+
+ private:
+  std::chrono::seconds max_time{60}; // 60 seconds
 };
 
 } // algo

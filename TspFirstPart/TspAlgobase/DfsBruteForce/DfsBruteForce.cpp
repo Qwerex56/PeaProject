@@ -5,15 +5,19 @@
 #include <stack>
 #include <algorithm>
 #include <iostream>
+#include <chrono>
+
 #include "DfsBruteForce.h"
 
 namespace pea_tsp::algo {
-DfsBruteForce::DfsBruteForce(const std::string &conf_path) : TspAlgoBase(conf_path) { }
+DfsBruteForce::DfsBruteForce(const std::string &conf_path) : TspAlgoBase(conf_path) {}
 
 std::vector<int> DfsBruteForce::FindSolution(Graph &graph) {
   auto path_id = 1;
   auto path_weight = INT_MAX;
   auto path_tour = std::vector<int>{};
+
+  const auto start{std::chrono::steady_clock::now()};
 
   for (auto start_point = 1; start_point <= graph.GetDimension(); ++start_point) {
     // stack of pairs <point_id, depth>
@@ -61,17 +65,9 @@ std::vector<int> DfsBruteForce::FindSolution(Graph &graph) {
       if (current_depth >= graph.GetDimension() + 2) {
         current_path.emplace_back(start_point);
 
-        auto current_path_weight = 0;
-        for (auto item = 0; item < current_path.size() - 1; ++item) {
-          auto travel_weight = graph.GetTravelWeight(current_path[item], current_path[item + 1]);
+        if (!IsPathTraversable(current_path, graph)) break;
 
-          if (travel_weight == -1) {
-            current_path_weight = INT_MAX;
-            break;
-          }
-
-          current_path_weight += travel_weight;
-        }
+        int current_path_weight = CalcPathTravelCost(graph, current_path);
 
         if (current_path_weight < path_weight && current_path_weight > 0) {
           path_weight = current_path_weight;
@@ -81,8 +77,21 @@ std::vector<int> DfsBruteForce::FindSolution(Graph &graph) {
     }
   }
 
-  std::cout << path_weight << std::endl;
+  const auto end{std::chrono::steady_clock::now()};
+  const std::chrono::duration<double> elapsed_seconds{end - start};
+
+  SaveToFile(path_tour, path_weight, elapsed_seconds.count(), "Result.csv");
   return path_tour;
+}
+
+int DfsBruteForce::CalcPathTravelCost(Graph &graph, const std::vector<int> &current_path) {
+  auto path_weight = 0;
+  for (auto item = 0; item < current_path.size() - 1; ++item) {
+    auto travel_weight = graph.GetTravelWeight(current_path[item], current_path[item + 1]);
+    path_weight += travel_weight;
+  }
+
+  return path_weight;
 }
 } // algo
 // pea_tsp

@@ -86,12 +86,12 @@ Graph &AsymmetricalGraph::AddPoint(int point_id, int to_point, int weight) {
   return *this;
 }
 
-std::tuple<int, std::vector<int>> AsymmetricalGraph::GetPoint(const int &point_id) {
+std::tuple<int, std::vector<int>> AsymmetricalGraph::GetPoint(const int &point_id) const {
   if (!points.contains(point_id)) {
     return {-1, {}};
   }
 
-  return {point_id, points[point_id]};
+  return {point_id, points.at(point_id)};
 }
 
 std::ostream &operator<<(std::ostream &os, AsymmetricalGraph &g) {

@@ -7,6 +7,7 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <chrono>
 
 #include "TspAlgoBase.h"
 #include "../Graph/SymmetricalGraph.h"
@@ -37,7 +38,7 @@ TspAlgoBase::TspAlgoBase(const std::string &conf_path) {
         do_show_progress_ = std::stoi(tokens[1]);
       } else if (tokens[0] == "graph_path") {
         graph_path_ = tokens[1];
-      } else if(tokens[0] == "is_symmetrical") {
+      } else if (tokens[0] == "is_symmetrical") {
         is_symmetrical_ = std::stoi(tokens[1]);
       } else if (tokens[0] == "graph_config") {
         graph_config = tokens[1];
@@ -53,27 +54,35 @@ TspAlgoBase::TspAlgoBase(const std::string &conf_path) {
 }
 
 std::vector<int> TspAlgoBase::CreateVerticesVector(const int vertices_count, const int start_point) {
-  std::vector<int> vertices = {};
-  vertices.reserve(vertices_count);
+  std::vector<int> vertices(vertices_count);
+  std::iota(vertices.begin(), vertices.end(), 1);
 
-  for (auto i = 1; i <= vertices_count; ++i) {
-    if (i == start_point) continue;
-    vertices.emplace_back(i);
-  }
+  std::erase_if(vertices, [&start_point](const int &item) {
+    return item == start_point;
+  });
 
   return vertices;
 }
 
 bool TspAlgoBase::IsPathTraversable(const std::vector<int> &path, Graph &graph) {
-  auto result = true;
-  for (auto node = 0; node < path.size() - 1; ++node) {
-    auto weight = std::get<1>(graph.GetPoint(path[node]))[node + 1];
-    if (weight <= 0) {
-      result = false;
-    }
-  }
+  auto last = path.cbegin();
+  return std::any_of(path.cbegin() + 1, path.cend(), [&](const auto &item) {
+    auto travel_weight = graph.GetTravelWeight(*last, item);
+    ++last;
 
-  return result;
+    return travel_weight <= 0;
+  });
+}
+
+void TspAlgoBase::SaveToFile(const std::vector<int> &path,
+                             const int travel_weight,
+                             double elapsed_seconds,
+                             const std::string &file_name) {
+  std::ofstream file(file_name);
+
+  file << "Path;Travel weight;Elapsed time;\n";
+  for (const auto &node : path) file << node << " ";
+  file << ";" << travel_weight << ";" << elapsed_seconds << ";";
 }
 } // algo
 // pea_tsp

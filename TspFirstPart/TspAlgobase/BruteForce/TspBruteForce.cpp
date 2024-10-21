@@ -4,6 +4,7 @@
 
 #include <algorithm>
 #include <iostream>
+#include <chrono>
 
 #include "TspBruteForce.h"
 
@@ -22,6 +23,8 @@ std::vector<int> TspBruteForce::FindSolution(Graph &graph) {
   auto path_counter = 1;
   auto possible_paths_count = 1;
   for (auto j = 1; j <= graph.GetDimension(); ++j) possible_paths_count *= j;
+
+  const auto start{std::chrono::steady_clock::now()};
 
   for (auto start_point = 1; start_point <= graph.GetDimension(); ++start_point) {
     vertices = {};
@@ -68,6 +71,13 @@ std::vector<int> TspBruteForce::FindSolution(Graph &graph) {
 
   }
 
+  const auto end{std::chrono::steady_clock::now()};
+  const std::chrono::duration<double> elapsed_seconds{end - start};
+
+  SaveToFile(min_path_tour,
+             min_path_weight,
+             elapsed_seconds.count(),
+             "TspBF-result.csv");
   return min_path_tour;
 }
 } // algo

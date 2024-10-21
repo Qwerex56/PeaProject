@@ -20,6 +20,7 @@ class DfsBruteForce : public TspAlgoBase {
   }
 
   std::vector<int> FindSolution(Graph &graph) final;
+  static int CalcPathTravelCost(Graph &graph, const std::vector<int> &current_path) ;
 };
 
 } // algo

@@ -6,13 +6,16 @@
 
 #include <algorithm>
 #include <stack>
+#include <chrono>
 
 namespace pea_tsp::algo {
-[[maybe_unused]] TspNearestNeighbour::TspNearestNeighbour(const std::string &conf_path) : TspAlgoBase(conf_path) { }
+[[maybe_unused]] TspNearestNeighbour::TspNearestNeighbour(const std::string &conf_path) : TspAlgoBase(conf_path) {}
 
 std::vector<int> TspNearestNeighbour::FindSolution(Graph &graph) {
   auto path_weight = INT_MAX;
   auto path_tour = std::vector<int>{};
+
+  const auto start{std::chrono::steady_clock::now()};
 
   for (auto start_point = 1; start_point <= graph.GetDimension(); ++start_point) {
     std::stack<std::pair<int, int>> path_stack{};
@@ -45,18 +48,18 @@ std::vector<int> TspNearestNeighbour::FindSolution(Graph &graph) {
       ++current_depth;
 
       if (current_depth >= graph.GetDimension() + 2) {
-        current_path.emplace_back(start_point);
+        current_path.emplace_back(current_path.front());
 
         auto current_path_weight = 0;
         for (auto item = 0; item < current_path.size() - 1; ++item) {
           auto travel_weight = graph.GetTravelWeight(current_path[item], current_path[item + 1]);
 
-          current_path_weight += travel_weight;
-
           if (travel_weight <= 0) {
             current_path_weight = INT_MAX;
             break;
           }
+
+          current_path_weight += travel_weight;
         }
 
         if (current_path_weight < path_weight) {
@@ -67,10 +70,18 @@ std::vector<int> TspNearestNeighbour::FindSolution(Graph &graph) {
     }
   }
 
+  const auto end{std::chrono::steady_clock::now()};
+  const std::chrono::duration<double> elapsed_seconds{end - start};
+
+  SaveToFile(path_tour,
+             path_weight,
+             elapsed_seconds.count(),
+             "TspNN-result.csv");
   return path_tour;
 }
 
-[[maybe_unused]] size_t TspNearestNeighbour::MinElementId(const std::vector<int> &elements, const std::vector<int> &visited) {
+[[maybe_unused]] size_t TspNearestNeighbour::MinElementId(const std::vector<int> &elements,
+                                                          const std::vector<int> &visited) {
   if (elements.begin() == elements.end()) return *elements.begin();
 
   auto smallest = INT_MAX;
@@ -111,7 +122,7 @@ std::vector<int> TspNearestNeighbour::MinElementIds(const std::vector<int> &elem
     }
 
     smallest = elements[i];
-    points_ids = {};
+    points_ids = {i + 1};
   }
 
   return points_ids;

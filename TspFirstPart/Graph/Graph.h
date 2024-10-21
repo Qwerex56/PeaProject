@@ -18,20 +18,20 @@ class Graph {
 
   virtual Graph &AddPoint(int point_id, int to_point_id, int weight) = 0;
 
-  std::string GetName();
-  std::string GetComment();
-  int GetDimension();
+  std::string GetName() const;
+  std::string GetComment() const;
+  int GetDimension() const;
 
-  virtual std::tuple<int, std::vector<int>> GetPoint(const int &point_id) = 0;
-  int GetTravelWeight(int from_id, int to_id);
-  int GetPossiblePathCount();
+  virtual std::tuple<int, std::vector<int>> GetPoint(const int &point_id) const = 0;
+  int GetTravelWeight(int from_id, int to_id) const;
+  int GetPossiblePathCount() const;
  protected:
   std::unordered_map<std::string, std::string> conf_;
 
-  void SetName(std::string name);
-  void SetComment(std::string comment);
+  void SetName(const std::string &name);
+  void SetComment(const std::string &comment);
   void SetDimension(int dimension);
-  void SetDimension(std::string dimension);
+  void SetDimension(const std::string &dimension);
 };
 
 } // pea_tsp

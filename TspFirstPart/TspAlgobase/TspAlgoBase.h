@@ -30,6 +30,11 @@ class TspAlgoBase {
 
   // Test for all point connectivity
   static bool IsPathTraversable(const std::vector<int> &path, Graph &graph);
+
+  static void SaveToFile(const std::vector<int> &path,
+                  int travel_weight,
+                  double elapsed_seconds,
+                  const std::string &file_name = "Result.txt");
 };
 
 } // algo
