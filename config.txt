@@ -2,3 +2,4 @@ show_progress=1
 graph_path=D:\dev\PeaProject\br4.atsp
 is_symmetrical=0
 graph_config=D:\dev\PeaProject\br4.atsp
+max_work_time=10
