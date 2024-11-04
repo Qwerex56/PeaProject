@@ -16,7 +16,6 @@ class TspRandomPath : public pea_tsp::algo::TspAlgoBase {
   explicit TspRandomPath(const std::string &conf_path);
 
   std::vector<int> FindSolution() final;
-  std::vector<int> FindSolution(Graph &graph) final;
 
  private:
   std::chrono::seconds max_time{60}; // 60 seconds

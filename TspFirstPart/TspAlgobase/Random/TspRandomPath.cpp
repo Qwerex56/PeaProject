@@ -40,20 +40,14 @@ TspRandomPath::TspRandomPath(const std::string &conf_path) : TspAlgoBase(conf_pa
 }
 
 std::vector<int> TspRandomPath::FindSolution() {
-  if (!graph_) return {};
-
-  return FindSolution(*graph_);
-}
-
-std::vector<int> TspRandomPath::FindSolution(Graph &graph) {
   std::random_device rd;
   std::mt19937 gen(rd());
-  std::uniform_int_distribution<> distribution(1, graph.GetDimension());
+  std::uniform_int_distribution<> distribution(1, graph_->GetDimension());
 
   const auto start_time{std::chrono::steady_clock::now()};
   auto current_time{std::chrono::steady_clock::now()};
 
-  auto path = std::vector<int>(graph.GetDimension());
+  auto path = std::vector<int>(graph_->GetDimension());
   std::iota(path.begin(), path.end(), 1);
 
   auto min_travel_weight = INT_MAX;
@@ -65,8 +59,8 @@ std::vector<int> TspRandomPath::FindSolution(Graph &graph) {
 
     auto current_path_weight = 0;
 
-    for (auto item = 0; item < graph.GetDimension(); ++item) {
-      auto travel_weight = graph.GetTravelWeight(path[item], path[item + 1]);
+    for (auto item = 0; item < graph_->GetDimension(); ++item) {
+      auto travel_weight = graph_->GetTravelWeight(path[item], path[item + 1]);
 
       if (travel_weight <= 0) {
         current_path_weight = -1;

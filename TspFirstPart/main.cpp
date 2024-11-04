@@ -7,7 +7,7 @@
 #include "TspAlgobase/Random/TspRandomPath.h"
 
 int main() {
-  auto dfs_bb = pea_tsp::algo::TspRandomPath(R"(D:\dev\PeaProject\config.txt)");
+  auto dfs_bb = pea_tsp::algo::DfsBruteForce(R"(E:\C-Projects\PeaProject\config.txt)");
 
   auto solution = dfs_bb.FindSolution();
 

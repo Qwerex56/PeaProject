@@ -16,25 +16,34 @@ class TspAlgoBase {
   explicit TspAlgoBase(const std::string &conf_path);
 
   virtual std::vector<int> FindSolution() = 0;
-  virtual std::vector<int> FindSolution(Graph &graph) = 0;
 
  protected:
   std::string graph_path_;
   bool do_show_progress_ = true;
-  // Should be an enum
   bool is_symmetrical_ = false;
-
+  int optimal_solution_ = -1;
   Graph *graph_ = nullptr;
+
+  int best_found_solution = -1;
+
+  [[nodiscard]] inline int GetResultDeviation() const noexcept {
+    return abs(optimal_solution_ - best_found_solution);
+  }
+
+  [[nodiscard]] inline float GetPercentDeviation() const noexcept {
+    return ((float) GetResultDeviation() / (float) optimal_solution_) * 100.0f;
+  }
 
   static std::vector<int> CreateVerticesVector(int vertices_count, int start_point);
 
   // Test for all point connectivity
-  static bool IsPathTraversable(const std::vector<int> &path, Graph &graph);
+  [[nodiscard]] bool IsPathTraversable(const std::vector<int> &path) const;
+  [[nodiscard]] int GetPathWeight(const std::vector<int> &path) const;
 
-  static void SaveToFile(const std::vector<int> &path,
-                  int travel_weight,
-                  double elapsed_seconds,
-                  const std::string &file_name = "Result.txt");
+  void SaveToFile(const std::vector<int> &path,
+                         int travel_weight,
+                         double elapsed_seconds,
+                         const std::string &file_name = "Result.txt") const;
 };
 
 } // algo

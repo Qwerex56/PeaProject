@@ -64,10 +64,11 @@ std::vector<int> TspAlgoBase::CreateVerticesVector(const int vertices_count, con
   return vertices;
 }
 
-bool TspAlgoBase::IsPathTraversable(const std::vector<int> &path, Graph &graph) {
+bool TspAlgoBase::IsPathTraversable(const std::vector<int> &path) const {
   auto last = path.cbegin();
-  return std::any_of(path.cbegin() + 1, path.cend(), [&](const auto &item) {
-    auto travel_weight = graph.GetTravelWeight(*last, item);
+
+  return !std::any_of(path.cbegin() + 1, path.cend(), [&](const auto &item) {
+    auto travel_weight = graph_->GetTravelWeight(*last, item);
     ++last;
 
     return travel_weight <= 0;
@@ -77,12 +78,26 @@ bool TspAlgoBase::IsPathTraversable(const std::vector<int> &path, Graph &graph) 
 void TspAlgoBase::SaveToFile(const std::vector<int> &path,
                              const int travel_weight,
                              double elapsed_seconds,
-                             const std::string &file_name) {
+                             const std::string &file_name) const {
   std::ofstream file(file_name);
 
-  file << "Path;Travel weight;Elapsed time;\n";
+  file << "Path;Travel weight;Elapsed time;Best solution; Deviation;\n";
   for (const auto &node : path) file << node << " ";
-  file << ";" << travel_weight << ";" << elapsed_seconds << ";";
+
+  file << ";" << travel_weight << ";" << elapsed_seconds << ";" << best_found_solution << ";" << GetPercentDeviation()
+       << ";";
+}
+
+int TspAlgoBase::GetPathWeight(const std::vector<int> &path) const {
+  auto path_weight = 0;
+
+  for (auto item = 0; item < path.size() - 1; ++item) {
+    auto travel_weight = graph_->GetTravelWeight(path[item], path[item + 1]);
+
+    path_weight += travel_weight;
+  }
+
+  return path_weight;
 }
 } // algo
 // pea_tsp

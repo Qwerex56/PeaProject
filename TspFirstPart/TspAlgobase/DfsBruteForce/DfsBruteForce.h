@@ -13,14 +13,7 @@ class DfsBruteForce : public TspAlgoBase {
   DfsBruteForce() = default;
   explicit DfsBruteForce(const std::string &conf_path);
 
-  std::vector<int> FindSolution() final {
-    if (!graph_) return {};
-
-    return FindSolution(*graph_);
-  }
-
-  std::vector<int> FindSolution(Graph &graph) final;
-  static int CalcPathTravelCost(Graph &graph, const std::vector<int> &current_path) ;
+  std::vector<int> FindSolution() final;
 };
 
 } // algo

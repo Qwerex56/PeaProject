@@ -13,25 +13,25 @@ namespace pea_tsp::algo {
 
 }
 
-std::vector<int> TspBruteForce::FindSolution(Graph &graph) {
+std::vector<int> TspBruteForce::FindSolution() {
   auto min_path_weight = INT_MAX;
   std::vector<int> min_path_tour = {};
 
   std::vector<int> vertices;
-  vertices.reserve(graph.GetDimension());
+  vertices.reserve(graph_->GetDimension());
 
   auto path_counter = 1;
   auto possible_paths_count = 1;
-  for (auto j = 1; j <= graph.GetDimension(); ++j) possible_paths_count *= j;
+  for (auto j = 1; j <= graph_->GetDimension(); ++j) possible_paths_count *= j;
 
   const auto start{std::chrono::steady_clock::now()};
 
-  for (auto start_point = 1; start_point <= graph.GetDimension(); ++start_point) {
+  for (auto start_point = 1; start_point <= graph_->GetDimension(); ++start_point) {
     vertices = {};
     auto current_path_weight = 0;
 
     // Create list of vertices
-    for (auto i = 1; i <= graph.GetDimension(); ++i) {
+    for (auto i = 1; i <= graph_->GetDimension(); ++i) {
       if (i == start_point) continue;
       vertices.emplace_back(i);
     }
@@ -42,7 +42,7 @@ std::vector<int> TspBruteForce::FindSolution(Graph &graph) {
 
       for (const auto &vertex : vertices) {
 
-        auto travel_weight = std::get<1>(graph.GetPoint(current))[vertex - 1];
+        auto travel_weight = std::get<1>(graph_->GetPoint(current))[vertex - 1];
 
         if (travel_weight == -1) {
           current_path_weight = -1;

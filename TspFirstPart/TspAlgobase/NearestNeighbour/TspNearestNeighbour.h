@@ -13,13 +13,7 @@ class [[maybe_unused]] TspNearestNeighbour : public TspAlgoBase {
   TspNearestNeighbour() = default;
   [[maybe_unused]] explicit TspNearestNeighbour(const std::string &conf_path);
 
-  std::vector<int> FindSolution() final {
-    if (!graph_) return {};
-
-    return FindSolution(*graph_);
-  }
-
-  std::vector<int> FindSolution(Graph &graph) final;
+  std::vector<int> FindSolution();
 
  private:
   // returns id of the minimum element, not value

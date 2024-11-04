@@ -4,51 +4,19 @@
 
 #include "Graph.h"
 
-#include <utility>
 #include <stdexcept>
 
 namespace pea_tsp {
 std::string Graph::GetName() const {
-  std::string ret;
-  try {
-    ret = conf_.at("NAME");
-  } catch (std::out_of_range &otr) { }
-
-  return ret;
+  return name_;
 }
 
 std::string Graph::GetComment() const {
-  std::string ret;
-  try {
-    ret = conf_.at("COMMENT");
-  } catch (std::out_of_range &otr) { }
-
-  return ret;
+  return comment_;
 }
 
 int Graph::GetDimension() const {
-  std::string ret;
-  try {
-    ret = conf_.at("DIMENSION");
-  } catch (std::out_of_range &otr) { }
-
-  return std::stoi(ret);
-}
-
-void Graph::SetName(const std::string &name) {
-  conf_["NAME"] = name;
-}
-
-void Graph::SetComment(const std::string &comment) {
-  conf_["COMMENT"] = comment;
-}
-
-void Graph::SetDimension(int dimension) {
-  conf_["DIMENSION"] = std::to_string(dimension);
-}
-
-void Graph::SetDimension(const std::string &dimension) {
-  conf_["DIMENSION"] = dimension;
+  return dimension_;
 }
 
 int Graph::GetTravelWeight(int from_id, int to_id) const {

@@ -17,9 +17,9 @@ SymmetricalGraph::SymmetricalGraph(const std::string &path) {
   if (!file.is_open()) {
     std::cout << "Failed to open\n";
 
-    conf_["DIMENSION"] = "";
-    conf_["NAME"] = "";
-    conf_["COMMENT"] = "";
+    name_ = "";
+    comment_ = "";
+    dimension_ = -1;
   } else {
     std::string line;
 
@@ -46,11 +46,11 @@ SymmetricalGraph::SymmetricalGraph(const std::string &path) {
       }
 
       if (tokens[0] == "NAME") {
-        conf_["NAME"] = tokens[1];
+        name_ = tokens[1];
       } else if (tokens[0] == "COMMENT") {
-        conf_["COMMENT"] = tokens[1];
+        comment_ = tokens[1];
       } else if (tokens[0] == "DIMENSION") {
-        conf_["DIMENSION"] = tokens[1];
+        dimension_ = std::stoi(tokens[1]);
       }
     }
 

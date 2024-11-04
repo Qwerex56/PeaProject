@@ -13,13 +13,7 @@ class [[maybe_unused]] TspBruteForce : public TspAlgoBase {
   TspBruteForce() = default;
   [[maybe_unused]] explicit TspBruteForce(const std::string &conf_path);
 
-  std::vector<int> FindSolution() final {
-    if (!graph_) return {};
-
-    return FindSolution(*graph_);
-  }
-
-  std::vector<int> FindSolution(Graph &graph) final;
+  std::vector<int> FindSolution() final;
 };
 } // algo
 // pea_tsp
