@@ -6,12 +6,38 @@
 #include <algorithm>
 #include <chrono>
 #include <iostream>
+#include <fstream>
 
 #include "TspRandomPath.h"
 
 namespace pea_tsp::algo {
 
-TspRandomPath::TspRandomPath(const std::string &conf_path) : TspAlgoBase(conf_path) {}
+TspRandomPath::TspRandomPath(const std::string &conf_path) : TspAlgoBase(conf_path) {
+  auto file = std::fstream{conf_path};
+
+  if (!file.is_open()) {
+    std::cout << "Could not open config file\n";
+  } else {
+    std::string line;
+    std::string graph_config;
+
+    while (!file.eof()) {
+      std::getline(file, line);
+
+      std::stringstream str_stream{line};
+      std::string token;
+      std::vector<std::string> tokens;
+
+      while (std::getline(str_stream, token, '=')) {
+        tokens.emplace_back(token);
+      }
+
+      if (tokens[0] == "max_work_time") {
+        max_time = std::chrono::seconds{std::stoi(tokens[1])};
+      }
+    }
+  }
+}
 
 std::vector<int> TspRandomPath::FindSolution() {
   if (!graph_) return {};
@@ -64,7 +90,7 @@ std::vector<int> TspRandomPath::FindSolution(Graph &graph) {
     if (do_show_progress_
         && std::chrono::duration_cast<std::chrono::milliseconds>(current_time - start_time).count() % 5000 == 0) {
       std::cout << "Elapsed: " << std::chrono::duration_cast<std::chrono::seconds>(current_time - start_time).count()
-        << "s / " << max_time.count() << "s\n";
+                << "s / " << max_time.count() << "s\n";
     }
 
   } while (std::chrono::duration_cast<std::chrono::seconds>(current_time - start_time).count() < max_time.count());
