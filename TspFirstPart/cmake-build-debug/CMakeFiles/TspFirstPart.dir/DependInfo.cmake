@@ -16,6 +16,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "E:/C-Projects/PeaProject/TspFirstPart/TspAlgobase/NearestNeighbour/TspNearestNeighbour.cpp" "CMakeFiles/TspFirstPart.dir/TspAlgobase/NearestNeighbour/TspNearestNeighbour.cpp.obj" "gcc" "CMakeFiles/TspFirstPart.dir/TspAlgobase/NearestNeighbour/TspNearestNeighbour.cpp.obj.d"
   "E:/C-Projects/PeaProject/TspFirstPart/TspAlgobase/Random/TspRandomPath.cpp" "CMakeFiles/TspFirstPart.dir/TspAlgobase/Random/TspRandomPath.cpp.obj" "gcc" "CMakeFiles/TspFirstPart.dir/TspAlgobase/Random/TspRandomPath.cpp.obj.d"
   "E:/C-Projects/PeaProject/TspFirstPart/TspAlgobase/TspAlgoBase.cpp" "CMakeFiles/TspFirstPart.dir/TspAlgobase/TspAlgoBase.cpp.obj" "gcc" "CMakeFiles/TspFirstPart.dir/TspAlgobase/TspAlgoBase.cpp.obj.d"
+  "E:/C-Projects/PeaProject/TspFirstPart/TspAlgobase/TspBabDfs/TspBabDfs.cpp" "CMakeFiles/TspFirstPart.dir/TspAlgobase/TspBabDfs/TspBabDfs.cpp.obj" "gcc" "CMakeFiles/TspFirstPart.dir/TspAlgobase/TspBabDfs/TspBabDfs.cpp.obj.d"
   "E:/C-Projects/PeaProject/TspFirstPart/main.cpp" "CMakeFiles/TspFirstPart.dir/main.cpp.obj" "gcc" "CMakeFiles/TspFirstPart.dir/main.cpp.obj.d"
   )
 

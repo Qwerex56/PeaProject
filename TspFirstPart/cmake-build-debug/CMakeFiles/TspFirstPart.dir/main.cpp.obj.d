@@ -216,4 +216,7 @@ CMakeFiles/TspFirstPart.dir/main.cpp.obj: \
  E:/Rider\ Ides/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/charconv \
  E:/Rider\ Ides/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/optional \
  E:/Rider\ Ides/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/span \
- E:/Rider\ Ides/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/ranges_algobase.h
+ E:/Rider\ Ides/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/ranges_algobase.h \
+ E:\C-Projects\PeaProject\TspFirstPart\TspAlgobase/TspBabDfs/TspBabDfs.h \
+ E:/C-Projects/PeaProject/TspFirstPart/TspAlgobase/TspAlgoBase.h \
+ E:/C-Projects/PeaProject/TspFirstPart/TspAlgobase/Random/TspRandomPath.h

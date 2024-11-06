@@ -49,6 +49,7 @@ std::vector<int> TspRandomPath::FindSolution() {
 
   auto path = std::vector<int>(graph_->GetDimension());
   std::iota(path.begin(), path.end(), 1);
+  auto tries = 0;
 
   auto min_travel_weight = INT_MAX;
   auto min_path = std::vector<int>();
@@ -57,22 +58,15 @@ std::vector<int> TspRandomPath::FindSolution() {
     // Close path
     path.emplace_back(path[0]);
 
-    auto current_path_weight = 0;
+    if (!IsPathTraversable(path)) continue;
+    ++tries;
+    auto current_path_weight = GetPathWeight(path);
 
-    for (auto item = 0; item < graph_->GetDimension(); ++item) {
-      auto travel_weight = graph_->GetTravelWeight(path[item], path[item + 1]);
-
-      if (travel_weight <= 0) {
-        current_path_weight = -1;
-        break;
-      }
-
-      current_path_weight += travel_weight;
-    }
-
-    if (current_path_weight < min_travel_weight && current_path_weight > 0) {
+    if (current_path_weight < min_travel_weight) {
       min_travel_weight = current_path_weight;
       min_path = path;
+
+      if (tries >= max_tries) break;
     }
 
     // delete duplicate vertex
@@ -97,6 +91,16 @@ std::vector<int> TspRandomPath::FindSolution() {
              elapsed_seconds.count(),
              "TspRand-result.csv");
   return min_path;
+}
+
+std::vector<int> TspRandomPath::FindSolutionWithTries(int tries) {
+  auto save_conf_tries = max_tries;
+
+  max_tries = tries;
+  auto result = FindSolution();
+  max_tries = save_conf_tries;
+
+  return result;
 }
 
 } // algo

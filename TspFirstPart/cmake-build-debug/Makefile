@@ -320,6 +320,30 @@ TspAlgobase/TspAlgoBase.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\TspFirstPart.dir\build.make CMakeFiles/TspFirstPart.dir/TspAlgobase/TspAlgoBase.cpp.s
 .PHONY : TspAlgobase/TspAlgoBase.cpp.s
 
+TspAlgobase/TspBabDfs/TspBabDfs.obj: TspAlgobase/TspBabDfs/TspBabDfs.cpp.obj
+.PHONY : TspAlgobase/TspBabDfs/TspBabDfs.obj
+
+# target to build an object file
+TspAlgobase/TspBabDfs/TspBabDfs.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TspFirstPart.dir\build.make CMakeFiles/TspFirstPart.dir/TspAlgobase/TspBabDfs/TspBabDfs.cpp.obj
+.PHONY : TspAlgobase/TspBabDfs/TspBabDfs.cpp.obj
+
+TspAlgobase/TspBabDfs/TspBabDfs.i: TspAlgobase/TspBabDfs/TspBabDfs.cpp.i
+.PHONY : TspAlgobase/TspBabDfs/TspBabDfs.i
+
+# target to preprocess a source file
+TspAlgobase/TspBabDfs/TspBabDfs.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TspFirstPart.dir\build.make CMakeFiles/TspFirstPart.dir/TspAlgobase/TspBabDfs/TspBabDfs.cpp.i
+.PHONY : TspAlgobase/TspBabDfs/TspBabDfs.cpp.i
+
+TspAlgobase/TspBabDfs/TspBabDfs.s: TspAlgobase/TspBabDfs/TspBabDfs.cpp.s
+.PHONY : TspAlgobase/TspBabDfs/TspBabDfs.s
+
+# target to generate assembly for a file
+TspAlgobase/TspBabDfs/TspBabDfs.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TspFirstPart.dir\build.make CMakeFiles/TspFirstPart.dir/TspAlgobase/TspBabDfs/TspBabDfs.cpp.s
+.PHONY : TspAlgobase/TspBabDfs/TspBabDfs.cpp.s
+
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
@@ -377,6 +401,9 @@ help:
 	@echo ... TspAlgobase/TspAlgoBase.obj
 	@echo ... TspAlgobase/TspAlgoBase.i
 	@echo ... TspAlgobase/TspAlgoBase.s
+	@echo ... TspAlgobase/TspBabDfs/TspBabDfs.obj
+	@echo ... TspAlgobase/TspBabDfs/TspBabDfs.i
+	@echo ... TspAlgobase/TspBabDfs/TspBabDfs.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

@@ -5,9 +5,10 @@
 #include "TspAlgobase/DfsBruteForce/DfsBruteForce.h"
 #include "TspAlgobase/NearestNeighbour/TspNearestNeighbour.h"
 #include "TspAlgobase/Random/TspRandomPath.h"
+#include "TspAlgobase/TspBabDfs/TspBabDfs.h"
 
 int main() {
-  auto dfs_bb = pea_tsp::algo::DfsBruteForce(R"(E:\C-Projects\PeaProject\config.txt)");
+  auto dfs_bb = pea_tsp::algo::TspBabDfs(R"(E:\C-Projects\PeaProject\config.txt)");
 
   auto solution = dfs_bb.FindSolution();
 

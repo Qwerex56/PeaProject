@@ -19,4 +19,6 @@ add_executable(TspFirstPart main.cpp
         TspAlgobase/DfsBruteForce/DfsBruteForce.cpp
         TspAlgobase/DfsBruteForce/DfsBruteForce.h
         TspAlgobase/Random/TspRandomPath.cpp
-        TspAlgobase/Random/TspRandomPath.h)
+        TspAlgobase/Random/TspRandomPath.h
+        TspAlgobase/TspBabDfs/TspBabDfs.cpp
+        TspAlgobase/TspBabDfs/TspBabDfs.h)
