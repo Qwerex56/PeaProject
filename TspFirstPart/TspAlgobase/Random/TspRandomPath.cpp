@@ -58,7 +58,12 @@ std::vector<int> TspRandomPath::FindSolution() {
     // Close path
     path.emplace_back(path[0]);
 
-    if (!IsPathTraversable(path)) continue;
+    if (!IsPathTraversable(path)) {
+      path.pop_back();
+      std::shuffle(path.begin(), path.end(), gen);
+      continue;
+    }
+
     ++tries;
     auto current_path_weight = GetPathWeight(path);
 

@@ -4,6 +4,7 @@
 
 #include <chrono>
 #include <stack>
+#include <iostream>
 #include "TspBabDfs.h"
 
 namespace pea_tsp::algo {
@@ -28,13 +29,18 @@ std::vector<int> TspBabDfs::FindSolution() {
     std::vector<int> current_path{};
     int current_depth = 1;
 
+    if (do_show_progress_) {
+      std::cout << "Start Point: " << start_point << "\n\tCurrent depth: " << current_depth << "/"
+                << graph_->GetDimension() + 1 << "\n\n";
+    }
+
     path_stack.emplace(start_point, current_depth);
 
     while (!path_stack.empty()) {
       auto current_point = path_stack.top();
       path_stack.pop();
 
-      if (current_path.size() > current_point.second) {
+      if (current_path.size() > current_point.second || current_point.second != current_depth) {
         current_path.erase(current_path.begin() + (current_point.second - 1), current_path.end());
         current_depth = current_point.second;
       }
@@ -77,7 +83,7 @@ std::vector<int> TspBabDfs::FindSolution() {
 
         int current_path_weight = GetPathWeight(current_path);
 
-        if (current_path_weight < path_weight) {
+        if (current_path_weight <= path_weight) {
           path_weight = current_path_weight;
           path_tour = current_path;
         }
@@ -85,7 +91,7 @@ std::vector<int> TspBabDfs::FindSolution() {
     }
   }
 
-  const auto end {std::chrono::steady_clock::now()};
+  const auto end{std::chrono::steady_clock::now()};
   std::chrono::duration<double> elapsed_seconds{end - start};
 
   SaveToFile(path_tour, path_weight, elapsed_seconds.count(), "TspBabDfs.csv");
@@ -96,7 +102,7 @@ std::vector<int> TspBabDfs::FindSolution() {
 int TspBabDfs::CalculateBound() const {
   if (bound_algo == nullptr) return -1;
 
-  return GetPathWeight(bound_algo->FindSolutionWithTries(3));
+  return GetPathWeight(bound_algo->FindSolutionWithTries(2));
 }
 
 } // algo
