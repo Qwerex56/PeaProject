@@ -10,7 +10,7 @@
 namespace pea_tsp::algo {
 
 TspBabDfs::TspBabDfs(const std::string &conf_path) : TspAlgoBase(conf_path) {
-  bound_algo = new TspRandomPath(conf_path);
+  bound_algo = new TspNearestNeighbour(conf_path, false);
 }
 
 std::vector<int> TspBabDfs::FindSolution() {
@@ -22,6 +22,8 @@ std::vector<int> TspBabDfs::FindSolution() {
   if (path_weight < 0) return {};
 
   const auto start{std::chrono::steady_clock::now()};
+  auto current_time{std::chrono::steady_clock::now()};
+  auto has_time_passed = false;
 
   for (auto start_point = 1; start_point <= graph_->GetDimension(); ++start_point) {
     std::stack<std::pair<int, int>> path_stack{};
@@ -88,13 +90,26 @@ std::vector<int> TspBabDfs::FindSolution() {
           path_tour = current_path;
         }
       }
+
+      current_time = std::chrono::steady_clock::now();
+      has_time_passed =
+          std::chrono::duration_cast<std::chrono::seconds>(current_time - start).count() >= max_time.count();
+
+      if (std::chrono::duration_cast<std::chrono::seconds>(current_time - start).count()
+          >= max_time.count() / graph_->GetDimension())
+        break;
     }
+    if (has_time_passed) break;
   }
 
   const auto end{std::chrono::steady_clock::now()};
   std::chrono::duration<double> elapsed_seconds{end - start};
 
-  SaveToFile(path_tour, path_weight, elapsed_seconds.count(), "TspBabDfs.csv");
+  if (path_tour.empty()) {
+    best_found_solution = -1;
+  } else best_found_solution = GetPathWeight(path_tour);
+
+  SaveToFile(path_tour, path_weight, elapsed_seconds.count(), "TspBabDfs");
 
   return path_tour;
 }
@@ -102,7 +117,7 @@ std::vector<int> TspBabDfs::FindSolution() {
 int TspBabDfs::CalculateBound() const {
   if (bound_algo == nullptr) return -1;
 
-  return GetPathWeight(bound_algo->FindSolutionWithTries(2));
+  return GetPathWeight(bound_algo->FindSolution());
 }
 
 } // algo

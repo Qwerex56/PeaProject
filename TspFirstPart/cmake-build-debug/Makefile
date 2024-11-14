@@ -344,6 +344,54 @@ TspAlgobase/TspBabDfs/TspBabDfs.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\TspFirstPart.dir\build.make CMakeFiles/TspFirstPart.dir/TspAlgobase/TspBabDfs/TspBabDfs.cpp.s
 .PHONY : TspAlgobase/TspBabDfs/TspBabDfs.cpp.s
 
+TspAlgobase/TspBestFirstSearch/TspBestFirstSearch.obj: TspAlgobase/TspBestFirstSearch/TspBestFirstSearch.cpp.obj
+.PHONY : TspAlgobase/TspBestFirstSearch/TspBestFirstSearch.obj
+
+# target to build an object file
+TspAlgobase/TspBestFirstSearch/TspBestFirstSearch.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TspFirstPart.dir\build.make CMakeFiles/TspFirstPart.dir/TspAlgobase/TspBestFirstSearch/TspBestFirstSearch.cpp.obj
+.PHONY : TspAlgobase/TspBestFirstSearch/TspBestFirstSearch.cpp.obj
+
+TspAlgobase/TspBestFirstSearch/TspBestFirstSearch.i: TspAlgobase/TspBestFirstSearch/TspBestFirstSearch.cpp.i
+.PHONY : TspAlgobase/TspBestFirstSearch/TspBestFirstSearch.i
+
+# target to preprocess a source file
+TspAlgobase/TspBestFirstSearch/TspBestFirstSearch.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TspFirstPart.dir\build.make CMakeFiles/TspFirstPart.dir/TspAlgobase/TspBestFirstSearch/TspBestFirstSearch.cpp.i
+.PHONY : TspAlgobase/TspBestFirstSearch/TspBestFirstSearch.cpp.i
+
+TspAlgobase/TspBestFirstSearch/TspBestFirstSearch.s: TspAlgobase/TspBestFirstSearch/TspBestFirstSearch.cpp.s
+.PHONY : TspAlgobase/TspBestFirstSearch/TspBestFirstSearch.s
+
+# target to generate assembly for a file
+TspAlgobase/TspBestFirstSearch/TspBestFirstSearch.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TspFirstPart.dir\build.make CMakeFiles/TspFirstPart.dir/TspAlgobase/TspBestFirstSearch/TspBestFirstSearch.cpp.s
+.PHONY : TspAlgobase/TspBestFirstSearch/TspBestFirstSearch.cpp.s
+
+TspAlgobase/TspBreadthFirstSearch/TspBreadthFirstSearch.obj: TspAlgobase/TspBreadthFirstSearch/TspBreadthFirstSearch.cpp.obj
+.PHONY : TspAlgobase/TspBreadthFirstSearch/TspBreadthFirstSearch.obj
+
+# target to build an object file
+TspAlgobase/TspBreadthFirstSearch/TspBreadthFirstSearch.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TspFirstPart.dir\build.make CMakeFiles/TspFirstPart.dir/TspAlgobase/TspBreadthFirstSearch/TspBreadthFirstSearch.cpp.obj
+.PHONY : TspAlgobase/TspBreadthFirstSearch/TspBreadthFirstSearch.cpp.obj
+
+TspAlgobase/TspBreadthFirstSearch/TspBreadthFirstSearch.i: TspAlgobase/TspBreadthFirstSearch/TspBreadthFirstSearch.cpp.i
+.PHONY : TspAlgobase/TspBreadthFirstSearch/TspBreadthFirstSearch.i
+
+# target to preprocess a source file
+TspAlgobase/TspBreadthFirstSearch/TspBreadthFirstSearch.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TspFirstPart.dir\build.make CMakeFiles/TspFirstPart.dir/TspAlgobase/TspBreadthFirstSearch/TspBreadthFirstSearch.cpp.i
+.PHONY : TspAlgobase/TspBreadthFirstSearch/TspBreadthFirstSearch.cpp.i
+
+TspAlgobase/TspBreadthFirstSearch/TspBreadthFirstSearch.s: TspAlgobase/TspBreadthFirstSearch/TspBreadthFirstSearch.cpp.s
+.PHONY : TspAlgobase/TspBreadthFirstSearch/TspBreadthFirstSearch.s
+
+# target to generate assembly for a file
+TspAlgobase/TspBreadthFirstSearch/TspBreadthFirstSearch.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\TspFirstPart.dir\build.make CMakeFiles/TspFirstPart.dir/TspAlgobase/TspBreadthFirstSearch/TspBreadthFirstSearch.cpp.s
+.PHONY : TspAlgobase/TspBreadthFirstSearch/TspBreadthFirstSearch.cpp.s
+
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
@@ -404,6 +452,12 @@ help:
 	@echo ... TspAlgobase/TspBabDfs/TspBabDfs.obj
 	@echo ... TspAlgobase/TspBabDfs/TspBabDfs.i
 	@echo ... TspAlgobase/TspBabDfs/TspBabDfs.s
+	@echo ... TspAlgobase/TspBestFirstSearch/TspBestFirstSearch.obj
+	@echo ... TspAlgobase/TspBestFirstSearch/TspBestFirstSearch.i
+	@echo ... TspAlgobase/TspBestFirstSearch/TspBestFirstSearch.s
+	@echo ... TspAlgobase/TspBreadthFirstSearch/TspBreadthFirstSearch.obj
+	@echo ... TspAlgobase/TspBreadthFirstSearch/TspBreadthFirstSearch.i
+	@echo ... TspAlgobase/TspBreadthFirstSearch/TspBreadthFirstSearch.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

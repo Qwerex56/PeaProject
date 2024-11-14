@@ -21,4 +21,8 @@ add_executable(TspFirstPart main.cpp
         TspAlgobase/Random/TspRandomPath.cpp
         TspAlgobase/Random/TspRandomPath.h
         TspAlgobase/TspBabDfs/TspBabDfs.cpp
-        TspAlgobase/TspBabDfs/TspBabDfs.h)
+        TspAlgobase/TspBabDfs/TspBabDfs.h
+        TspAlgobase/TspBreadthFirstSearch/TspBreadthFirstSearch.cpp
+        TspAlgobase/TspBreadthFirstSearch/TspBreadthFirstSearch.h
+        TspAlgobase/TspBestFirstSearch/TspBestFirstSearch.cpp
+        TspAlgobase/TspBestFirstSearch/TspBestFirstSearch.h)

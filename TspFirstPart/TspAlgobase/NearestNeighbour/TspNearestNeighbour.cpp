@@ -9,7 +9,10 @@
 #include <chrono>
 
 namespace pea_tsp::algo {
-[[maybe_unused]] TspNearestNeighbour::TspNearestNeighbour(const std::string &conf_path) : TspAlgoBase(conf_path) {}
+[[maybe_unused]] TspNearestNeighbour::TspNearestNeighbour(const std::string &conf_path, bool create_log)
+    : TspAlgoBase(conf_path) {
+  do_crete_log = create_log;
+}
 
 std::vector<int> TspNearestNeighbour::FindSolution() {
   if (graph_ == nullptr) {
@@ -20,6 +23,8 @@ std::vector<int> TspNearestNeighbour::FindSolution() {
   auto path_tour = std::vector<int>{};
 
   const auto start{std::chrono::steady_clock::now()};
+  auto current_time{std::chrono::steady_clock::now()};
+  auto has_time_passed = false;
 
   for (auto start_point = 1; start_point <= graph_->GetDimension(); ++start_point) {
     std::stack<std::pair<int, int>> path_stack{};
@@ -62,16 +67,29 @@ std::vector<int> TspNearestNeighbour::FindSolution() {
           path_tour = current_path;
         }
       }
+
+      current_time = std::chrono::steady_clock::now();
     }
+
+    has_time_passed =
+        std::chrono::duration_cast<std::chrono::seconds>(current_time - start).count() >= max_time.count();
+
+    if (has_time_passed) break;
   }
 
   const auto end{std::chrono::steady_clock::now()};
   const std::chrono::duration<double> elapsed_seconds{end - start};
 
-  SaveToFile(path_tour,
-             path_weight,
-             elapsed_seconds.count(),
-             "TspNN-result.csv");
+  if (path_tour.empty()) {
+    best_found_solution = -1;
+  } else best_found_solution = GetPathWeight(path_tour);
+
+  if (do_crete_log) {
+    SaveToFile(path_tour,
+               path_weight,
+               elapsed_seconds.count(),
+               "TspNN");
+  }
   return path_tour;
 }
 

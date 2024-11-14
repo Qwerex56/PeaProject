@@ -214,5 +214,5 @@ CMakeFiles/TspFirstPart.dir/TspAlgobase/TspBabDfs/TspBabDfs.cpp.obj: \
  E:/Rider\ Ides/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/unordered_map.h \
  E:/Rider\ Ides/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/hashtable.h \
  E:/Rider\ Ides/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/hashtable_policy.h \
- E:/C-Projects/PeaProject/TspFirstPart/TspAlgobase/Random/TspRandomPath.h \
+ E:/C-Projects/PeaProject/TspFirstPart/TspAlgobase/NearestNeighbour/TspNearestNeighbour.h \
  E:/C-Projects/PeaProject/TspFirstPart/TspAlgobase/TspAlgoBase.h

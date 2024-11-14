@@ -12,32 +12,7 @@
 
 namespace pea_tsp::algo {
 
-TspRandomPath::TspRandomPath(const std::string &conf_path) : TspAlgoBase(conf_path) {
-  auto file = std::fstream{conf_path};
-
-  if (!file.is_open()) {
-    std::cout << "Could not open config file\n";
-  } else {
-    std::string line;
-    std::string graph_config;
-
-    while (!file.eof()) {
-      std::getline(file, line);
-
-      std::stringstream str_stream{line};
-      std::string token;
-      std::vector<std::string> tokens;
-
-      while (std::getline(str_stream, token, '=')) {
-        tokens.emplace_back(token);
-      }
-
-      if (tokens[0] == "max_work_time") {
-        max_time = std::chrono::seconds{std::stoi(tokens[1])};
-      }
-    }
-  }
-}
+TspRandomPath::TspRandomPath(const std::string &conf_path) : TspAlgoBase(conf_path) { }
 
 std::vector<int> TspRandomPath::FindSolution() {
   std::random_device rd;
@@ -70,8 +45,6 @@ std::vector<int> TspRandomPath::FindSolution() {
     if (current_path_weight < min_travel_weight) {
       min_travel_weight = current_path_weight;
       min_path = path;
-
-      if (tries >= max_tries) break;
     }
 
     // delete duplicate vertex
@@ -91,21 +64,15 @@ std::vector<int> TspRandomPath::FindSolution() {
   const auto end{std::chrono::steady_clock::now()};
   const std::chrono::duration<double> elapsed_seconds{end - start_time};
 
+  if (min_path.empty()) {
+    best_found_solution = -1;
+  } else best_found_solution = GetPathWeight(min_path);
+
   SaveToFile(min_path,
              min_travel_weight,
              elapsed_seconds.count(),
-             "TspRand-result.csv");
+             "TspRand");
   return min_path;
-}
-
-std::vector<int> TspRandomPath::FindSolutionWithTries(int tries) {
-  auto save_conf_tries = max_tries;
-
-  max_tries = tries;
-  auto result = FindSolution();
-  max_tries = save_conf_tries;
-
-  return result;
 }
 
 } // algo

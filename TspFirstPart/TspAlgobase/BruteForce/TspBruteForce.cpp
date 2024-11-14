@@ -24,10 +24,11 @@ std::vector<int> TspBruteForce::FindSolution() {
   auto possible_paths_count = 1;
   for (auto j = 1; j <= graph_->GetDimension(); ++j) possible_paths_count *= j;
 
-  const auto start{std::chrono::steady_clock::now()};
+  auto start{std::chrono::steady_clock::now()};
+  auto current_time{std::chrono::steady_clock::now()};
 
   for (auto start_point = 1; start_point <= graph_->GetDimension(); ++start_point) {
-    vertices = {};
+    vertices = {start_point};
     auto current_path_weight = 0;
 
     // Create list of vertices
@@ -65,19 +66,30 @@ std::vector<int> TspBruteForce::FindSolution() {
       vertices.pop_back();
 
       if (do_show_progress_) {
-        std::cout << "Done path: " << path_counter++ << "\t of: " << possible_paths_count << std::endl;
+        std::cout << "Bf Done path: " << path_counter++ << "\t of: " << possible_paths_count << std::endl;
       }
+
+      current_time = std::chrono::steady_clock::now();
+
+      if (std::chrono::duration_cast<std::chrono::seconds>(current_time - start).count()
+          >= max_time.count() / graph_->GetDimension()) { break; }
     } while (std::next_permutation(vertices.begin(), vertices.end()));
 
+    std::cout << "Hi\n";
   }
 
   const auto end{std::chrono::steady_clock::now()};
   const std::chrono::duration<double> elapsed_seconds{end - start};
 
+  if (min_path_tour.empty()) {
+    best_found_solution = -1;
+  } else best_found_solution = GetPathWeight(min_path_tour);
+
   SaveToFile(min_path_tour,
              min_path_weight,
              elapsed_seconds.count(),
-             "TspBF-result.csv");
+             "TspBF");
+
   return min_path_tour;
 }
 } // algo

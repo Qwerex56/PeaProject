@@ -208,6 +208,34 @@ CMakeFiles/TspFirstPart.dir/TspAlgobase/TspBabDfs/TspBabDfs.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/TspFirstPart.dir/TspAlgobase/TspBabDfs/TspBabDfs.cpp.s"
 	"E:\Rider Ides\CLion\bin\mingw\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\C-Projects\PeaProject\TspFirstPart\TspAlgobase\TspBabDfs\TspBabDfs.cpp -o CMakeFiles\TspFirstPart.dir\TspAlgobase\TspBabDfs\TspBabDfs.cpp.s
 
+CMakeFiles/TspFirstPart.dir/TspAlgobase/TspBreadthFirstSearch/TspBreadthFirstSearch.cpp.obj: CMakeFiles/TspFirstPart.dir/flags.make
+CMakeFiles/TspFirstPart.dir/TspAlgobase/TspBreadthFirstSearch/TspBreadthFirstSearch.cpp.obj: E:/C-Projects/PeaProject/TspFirstPart/TspAlgobase/TspBreadthFirstSearch/TspBreadthFirstSearch.cpp
+CMakeFiles/TspFirstPart.dir/TspAlgobase/TspBreadthFirstSearch/TspBreadthFirstSearch.cpp.obj: CMakeFiles/TspFirstPart.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=E:\C-Projects\PeaProject\TspFirstPart\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/TspFirstPart.dir/TspAlgobase/TspBreadthFirstSearch/TspBreadthFirstSearch.cpp.obj"
+	"E:\Rider Ides\CLion\bin\mingw\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/TspFirstPart.dir/TspAlgobase/TspBreadthFirstSearch/TspBreadthFirstSearch.cpp.obj -MF CMakeFiles\TspFirstPart.dir\TspAlgobase\TspBreadthFirstSearch\TspBreadthFirstSearch.cpp.obj.d -o CMakeFiles\TspFirstPart.dir\TspAlgobase\TspBreadthFirstSearch\TspBreadthFirstSearch.cpp.obj -c E:\C-Projects\PeaProject\TspFirstPart\TspAlgobase\TspBreadthFirstSearch\TspBreadthFirstSearch.cpp
+
+CMakeFiles/TspFirstPart.dir/TspAlgobase/TspBreadthFirstSearch/TspBreadthFirstSearch.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/TspFirstPart.dir/TspAlgobase/TspBreadthFirstSearch/TspBreadthFirstSearch.cpp.i"
+	"E:\Rider Ides\CLion\bin\mingw\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\C-Projects\PeaProject\TspFirstPart\TspAlgobase\TspBreadthFirstSearch\TspBreadthFirstSearch.cpp > CMakeFiles\TspFirstPart.dir\TspAlgobase\TspBreadthFirstSearch\TspBreadthFirstSearch.cpp.i
+
+CMakeFiles/TspFirstPart.dir/TspAlgobase/TspBreadthFirstSearch/TspBreadthFirstSearch.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/TspFirstPart.dir/TspAlgobase/TspBreadthFirstSearch/TspBreadthFirstSearch.cpp.s"
+	"E:\Rider Ides\CLion\bin\mingw\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\C-Projects\PeaProject\TspFirstPart\TspAlgobase\TspBreadthFirstSearch\TspBreadthFirstSearch.cpp -o CMakeFiles\TspFirstPart.dir\TspAlgobase\TspBreadthFirstSearch\TspBreadthFirstSearch.cpp.s
+
+CMakeFiles/TspFirstPart.dir/TspAlgobase/TspBestFirstSearch/TspBestFirstSearch.cpp.obj: CMakeFiles/TspFirstPart.dir/flags.make
+CMakeFiles/TspFirstPart.dir/TspAlgobase/TspBestFirstSearch/TspBestFirstSearch.cpp.obj: E:/C-Projects/PeaProject/TspFirstPart/TspAlgobase/TspBestFirstSearch/TspBestFirstSearch.cpp
+CMakeFiles/TspFirstPart.dir/TspAlgobase/TspBestFirstSearch/TspBestFirstSearch.cpp.obj: CMakeFiles/TspFirstPart.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=E:\C-Projects\PeaProject\TspFirstPart\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/TspFirstPart.dir/TspAlgobase/TspBestFirstSearch/TspBestFirstSearch.cpp.obj"
+	"E:\Rider Ides\CLion\bin\mingw\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/TspFirstPart.dir/TspAlgobase/TspBestFirstSearch/TspBestFirstSearch.cpp.obj -MF CMakeFiles\TspFirstPart.dir\TspAlgobase\TspBestFirstSearch\TspBestFirstSearch.cpp.obj.d -o CMakeFiles\TspFirstPart.dir\TspAlgobase\TspBestFirstSearch\TspBestFirstSearch.cpp.obj -c E:\C-Projects\PeaProject\TspFirstPart\TspAlgobase\TspBestFirstSearch\TspBestFirstSearch.cpp
+
+CMakeFiles/TspFirstPart.dir/TspAlgobase/TspBestFirstSearch/TspBestFirstSearch.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/TspFirstPart.dir/TspAlgobase/TspBestFirstSearch/TspBestFirstSearch.cpp.i"
+	"E:\Rider Ides\CLion\bin\mingw\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\C-Projects\PeaProject\TspFirstPart\TspAlgobase\TspBestFirstSearch\TspBestFirstSearch.cpp > CMakeFiles\TspFirstPart.dir\TspAlgobase\TspBestFirstSearch\TspBestFirstSearch.cpp.i
+
+CMakeFiles/TspFirstPart.dir/TspAlgobase/TspBestFirstSearch/TspBestFirstSearch.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/TspFirstPart.dir/TspAlgobase/TspBestFirstSearch/TspBestFirstSearch.cpp.s"
+	"E:\Rider Ides\CLion\bin\mingw\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\C-Projects\PeaProject\TspFirstPart\TspAlgobase\TspBestFirstSearch\TspBestFirstSearch.cpp -o CMakeFiles\TspFirstPart.dir\TspAlgobase\TspBestFirstSearch\TspBestFirstSearch.cpp.s
+
 # Object files for target TspFirstPart
 TspFirstPart_OBJECTS = \
 "CMakeFiles/TspFirstPart.dir/main.cpp.obj" \
@@ -219,7 +247,9 @@ TspFirstPart_OBJECTS = \
 "CMakeFiles/TspFirstPart.dir/TspAlgobase/NearestNeighbour/TspNearestNeighbour.cpp.obj" \
 "CMakeFiles/TspFirstPart.dir/TspAlgobase/DfsBruteForce/DfsBruteForce.cpp.obj" \
 "CMakeFiles/TspFirstPart.dir/TspAlgobase/Random/TspRandomPath.cpp.obj" \
-"CMakeFiles/TspFirstPart.dir/TspAlgobase/TspBabDfs/TspBabDfs.cpp.obj"
+"CMakeFiles/TspFirstPart.dir/TspAlgobase/TspBabDfs/TspBabDfs.cpp.obj" \
+"CMakeFiles/TspFirstPart.dir/TspAlgobase/TspBreadthFirstSearch/TspBreadthFirstSearch.cpp.obj" \
+"CMakeFiles/TspFirstPart.dir/TspAlgobase/TspBestFirstSearch/TspBestFirstSearch.cpp.obj"
 
 # External object files for target TspFirstPart
 TspFirstPart_EXTERNAL_OBJECTS =
@@ -234,11 +264,13 @@ TspFirstPart.exe: CMakeFiles/TspFirstPart.dir/TspAlgobase/NearestNeighbour/TspNe
 TspFirstPart.exe: CMakeFiles/TspFirstPart.dir/TspAlgobase/DfsBruteForce/DfsBruteForce.cpp.obj
 TspFirstPart.exe: CMakeFiles/TspFirstPart.dir/TspAlgobase/Random/TspRandomPath.cpp.obj
 TspFirstPart.exe: CMakeFiles/TspFirstPart.dir/TspAlgobase/TspBabDfs/TspBabDfs.cpp.obj
+TspFirstPart.exe: CMakeFiles/TspFirstPart.dir/TspAlgobase/TspBreadthFirstSearch/TspBreadthFirstSearch.cpp.obj
+TspFirstPart.exe: CMakeFiles/TspFirstPart.dir/TspAlgobase/TspBestFirstSearch/TspBestFirstSearch.cpp.obj
 TspFirstPart.exe: CMakeFiles/TspFirstPart.dir/build.make
 TspFirstPart.exe: CMakeFiles/TspFirstPart.dir/linkLibs.rsp
 TspFirstPart.exe: CMakeFiles/TspFirstPart.dir/objects1.rsp
 TspFirstPart.exe: CMakeFiles/TspFirstPart.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=E:\C-Projects\PeaProject\TspFirstPart\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable TspFirstPart.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=E:\C-Projects\PeaProject\TspFirstPart\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable TspFirstPart.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\TspFirstPart.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

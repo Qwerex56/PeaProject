@@ -42,6 +42,8 @@ TspAlgoBase::TspAlgoBase(const std::string &conf_path) {
         is_symmetrical_ = std::stoi(tokens[1]);
       } else if (tokens[0] == "graph_config") {
         graph_config = tokens[1];
+      } else if (tokens[0] == "max_work_time") {
+        max_time = std::chrono::seconds{std::stoi(tokens[1])};
       }
     }
 
@@ -78,14 +80,13 @@ bool TspAlgoBase::IsPathTraversable(const std::vector<int> &path) const {
 void TspAlgoBase::SaveToFile(const std::vector<int> &path,
                              const int travel_weight,
                              double elapsed_seconds,
-                             const std::string &file_name) const {
-  std::ofstream file(file_name);
+                             const std::string &algorithm) const {
+  std::ofstream file(".\\Results\\TspResults.csv", std::fstream::app);
 
-  file << "Path;Travel weight;Elapsed time;Best solution; Deviation;\n";
   for (const auto &node : path) file << node << " ";
 
   file << ";" << travel_weight << ";" << elapsed_seconds << ";" << best_found_solution << ";" << GetPercentDeviation()
-       << ";";
+       << ";" << algorithm << "\n";
 }
 
 int TspAlgoBase::GetPathWeight(const std::vector<int> &path) const {
@@ -99,5 +100,6 @@ int TspAlgoBase::GetPathWeight(const std::vector<int> &path) const {
 
   return path_weight;
 }
+
 } // algo
 // pea_tsp

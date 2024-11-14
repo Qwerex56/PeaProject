@@ -6,16 +6,19 @@
 #define TSPFIRSTPART_TSPALGOBASE_NEARESTNEIGHBOUR_TSPNEARESTNEIGHBOUR_H_
 
 #include "../TspAlgoBase.h"
+
 namespace pea_tsp::algo {
 
 class [[maybe_unused]] TspNearestNeighbour : public TspAlgoBase {
  public:
   TspNearestNeighbour() = default;
-  [[maybe_unused]] explicit TspNearestNeighbour(const std::string &conf_path);
+  [[maybe_unused]] explicit TspNearestNeighbour(const std::string &conf_path, bool create_log = true);
 
-  std::vector<int> FindSolution();
+  std::vector<int> FindSolution() final;
 
  private:
+  bool do_crete_log = true;
+
   // returns id of the minimum element, not value
   [[maybe_unused]] static size_t MinElementId(const std::vector<int> &elements, const std::vector<int> &visited);
 

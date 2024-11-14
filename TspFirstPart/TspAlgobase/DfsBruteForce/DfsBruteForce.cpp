@@ -16,6 +16,7 @@ std::vector<int> DfsBruteForce::FindSolution() {
   auto path_tour = std::vector<int>{};
 
   const auto start{std::chrono::steady_clock::now()};
+  auto current_time{std::chrono::steady_clock::now()};
 
   for (auto start_point = 1; start_point <= graph_->GetDimension(); ++start_point) {
     // stack of pairs <point_id, depth>
@@ -71,13 +72,23 @@ std::vector<int> DfsBruteForce::FindSolution() {
           path_tour = current_path;
         }
       }
+
+      current_time = std::chrono::steady_clock::now();
+
+      if (std::chrono::duration_cast<std::chrono::seconds>(current_time - start).count()
+          >= max_time.count() / graph_->GetDimension())
+        break;
     }
   }
 
   const auto end{std::chrono::steady_clock::now()};
   const std::chrono::duration<double> elapsed_seconds{end - start};
 
-  SaveToFile(path_tour, path_weight, elapsed_seconds.count(), "Result.csv");
+  if (path_tour.empty()) {
+    best_found_solution = -1;
+  } else best_found_solution = GetPathWeight(path_tour);
+
+  SaveToFile(path_tour, path_weight, elapsed_seconds.count(), "DfsBruteForce");
   return path_tour;
 }
 } // algo

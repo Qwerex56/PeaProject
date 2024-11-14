@@ -1,5 +1,5 @@
-show_progress=1
+show_progress=0
 graph_path=E:\C-Projects\PeaProject\br17.atsp
 is_symmetrical=0
 graph_config=E:\C-Projects\PeaProject\br17.atsp
-max_work_time=10
+max_work_time=1800

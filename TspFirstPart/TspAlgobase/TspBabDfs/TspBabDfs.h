@@ -6,7 +6,8 @@
 #define TSPFIRSTPART_TSPALGOBASE_TSPBABDFS_TSPBABDFS_H_
 
 #include "../TspAlgoBase.h"
-#include "../Random/TspRandomPath.h"
+#include "../NearestNeighbour/TspNearestNeighbour.h"
+
 namespace pea_tsp::algo {
 
 class TspBabDfs : public TspAlgoBase {
@@ -17,7 +18,7 @@ class TspBabDfs : public TspAlgoBase {
   std::vector<int> FindSolution() final;
 
  protected:
-  TspRandomPath *bound_algo = nullptr;
+  TspNearestNeighbour *bound_algo = nullptr;
 
   [[nodiscard]] int CalculateBound() const;
 };

@@ -174,12 +174,6 @@ CMakeFiles/TspFirstPart.dir/main.cpp.obj: \
  E:\C-Projects\PeaProject\TspFirstPart\TspAlgobase/BruteForce/TspBruteForce.h \
  E:/C-Projects/PeaProject/TspFirstPart/TspAlgobase/TspAlgoBase.h \
  E:/C-Projects/PeaProject/TspFirstPart/Graph/Graph.h \
- E:\C-Projects\PeaProject\TspFirstPart\TspAlgobase/DfsBruteForce/DfsBruteForce.h \
- E:/C-Projects/PeaProject/TspFirstPart/TspAlgobase/TspAlgoBase.h \
- E:\C-Projects\PeaProject\TspFirstPart\TspAlgobase/NearestNeighbour/TspNearestNeighbour.h \
- E:/C-Projects/PeaProject/TspFirstPart/TspAlgobase/TspAlgoBase.h \
- E:\C-Projects\PeaProject\TspFirstPart\TspAlgobase/Random/TspRandomPath.h \
- E:/C-Projects/PeaProject/TspFirstPart/TspAlgobase/TspAlgoBase.h \
  E:/Rider\ Ides/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/chrono \
  E:/Rider\ Ides/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/chrono.h \
  E:/Rider\ Ides/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ratio \
@@ -217,6 +211,18 @@ CMakeFiles/TspFirstPart.dir/main.cpp.obj: \
  E:/Rider\ Ides/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/optional \
  E:/Rider\ Ides/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/span \
  E:/Rider\ Ides/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/ranges_algobase.h \
+ E:\C-Projects\PeaProject\TspFirstPart\TspAlgobase/DfsBruteForce/DfsBruteForce.h \
+ E:/C-Projects/PeaProject/TspFirstPart/TspAlgobase/TspAlgoBase.h \
+ E:\C-Projects\PeaProject\TspFirstPart\TspAlgobase/NearestNeighbour/TspNearestNeighbour.h \
+ E:/C-Projects/PeaProject/TspFirstPart/TspAlgobase/TspAlgoBase.h \
+ E:\C-Projects\PeaProject\TspFirstPart\TspAlgobase/Random/TspRandomPath.h \
+ E:/C-Projects/PeaProject/TspFirstPart/TspAlgobase/TspAlgoBase.h \
  E:\C-Projects\PeaProject\TspFirstPart\TspAlgobase/TspBabDfs/TspBabDfs.h \
  E:/C-Projects/PeaProject/TspFirstPart/TspAlgobase/TspAlgoBase.h \
- E:/C-Projects/PeaProject/TspFirstPart/TspAlgobase/Random/TspRandomPath.h
+ E:/C-Projects/PeaProject/TspFirstPart/TspAlgobase/NearestNeighbour/TspNearestNeighbour.h \
+ E:\C-Projects\PeaProject\TspFirstPart\TspAlgobase/TspBreadthFirstSearch/TspBreadthFirstSearch.h \
+ E:/C-Projects/PeaProject/TspFirstPart/TspAlgobase/TspAlgoBase.h \
+ E:/C-Projects/PeaProject/TspFirstPart/TspAlgobase/NearestNeighbour/TspNearestNeighbour.h \
+ E:\C-Projects\PeaProject\TspFirstPart\TspAlgobase/TspBestFirstSearch/TspBestFirstSearch.h \
+ E:/C-Projects/PeaProject/TspFirstPart/TspAlgobase/TspAlgoBase.h \
+ E:/C-Projects/PeaProject/TspFirstPart/TspAlgobase/NearestNeighbour/TspNearestNeighbour.h
