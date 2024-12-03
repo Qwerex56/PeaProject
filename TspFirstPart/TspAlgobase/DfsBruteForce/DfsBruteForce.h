@@ -11,7 +11,7 @@ namespace pea_tsp::algo {
 class DfsBruteForce : public TspAlgoBase {
  public:
   DfsBruteForce() = default;
-  explicit DfsBruteForce(const std::string &conf_path);
+  explicit DfsBruteForce(const std::string &conf_path, const std::string &graph_conf_path = "");
 
   std::vector<int> FindSolution() final;
 };

@@ -14,7 +14,7 @@
 #include "../Graph/AsymmetricalGraph.h"
 
 namespace pea_tsp::algo {
-TspAlgoBase::TspAlgoBase(const std::string &conf_path) {
+TspAlgoBase::TspAlgoBase(const std::string &conf_path, const std::string &graph_conf_path) {
   auto file = std::fstream{conf_path};
 
   if (!file.is_open()) {
@@ -44,13 +44,20 @@ TspAlgoBase::TspAlgoBase(const std::string &conf_path) {
         graph_config = tokens[1];
       } else if (tokens[0] == "max_work_time") {
         max_time = std::chrono::seconds{std::stoi(tokens[1])};
+      } else if (tokens[0] == "optimal_solution") {
+        optimal_solution_ = std::stoi(tokens[1]);
       }
     }
 
+    if (!graph_conf_path.empty()) {
+      graph_config = graph_conf_path;
+    }
+
     if (is_symmetrical_) {
-      graph_ = new pea_tsp::SymmetricalGraph(graph_config);
+      graph_ = new pea_tsp::SymmetricalGraph(graph_path_);
     } else {
-      graph_ = new pea_tsp::AsymmetricalGraph(graph_config);
+      std::cout << graph_path_;
+      graph_ = new pea_tsp::AsymmetricalGraph(graph_path_);
     }
   }
 }
@@ -81,7 +88,7 @@ void TspAlgoBase::SaveToFile(const std::vector<int> &path,
                              const int travel_weight,
                              double elapsed_seconds,
                              const std::string &algorithm) const {
-  std::ofstream file(".\\Results\\TspResults.csv", std::fstream::app);
+  std::ofstream file(".\\TspResults.csv", std::fstream::app);
 
   for (const auto &node : path) file << node << " ";
 

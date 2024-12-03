@@ -200,30 +200,6 @@ Graph/SymmetricalGraph.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\TspFirstPart.dir\build.make CMakeFiles/TspFirstPart.dir/Graph/SymmetricalGraph.cpp.s
 .PHONY : Graph/SymmetricalGraph.cpp.s
 
-TspAlgobase/BruteForce/TspBruteForce.obj: TspAlgobase/BruteForce/TspBruteForce.cpp.obj
-.PHONY : TspAlgobase/BruteForce/TspBruteForce.obj
-
-# target to build an object file
-TspAlgobase/BruteForce/TspBruteForce.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\TspFirstPart.dir\build.make CMakeFiles/TspFirstPart.dir/TspAlgobase/BruteForce/TspBruteForce.cpp.obj
-.PHONY : TspAlgobase/BruteForce/TspBruteForce.cpp.obj
-
-TspAlgobase/BruteForce/TspBruteForce.i: TspAlgobase/BruteForce/TspBruteForce.cpp.i
-.PHONY : TspAlgobase/BruteForce/TspBruteForce.i
-
-# target to preprocess a source file
-TspAlgobase/BruteForce/TspBruteForce.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\TspFirstPart.dir\build.make CMakeFiles/TspFirstPart.dir/TspAlgobase/BruteForce/TspBruteForce.cpp.i
-.PHONY : TspAlgobase/BruteForce/TspBruteForce.cpp.i
-
-TspAlgobase/BruteForce/TspBruteForce.s: TspAlgobase/BruteForce/TspBruteForce.cpp.s
-.PHONY : TspAlgobase/BruteForce/TspBruteForce.s
-
-# target to generate assembly for a file
-TspAlgobase/BruteForce/TspBruteForce.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\TspFirstPart.dir\build.make CMakeFiles/TspFirstPart.dir/TspAlgobase/BruteForce/TspBruteForce.cpp.s
-.PHONY : TspAlgobase/BruteForce/TspBruteForce.cpp.s
-
 TspAlgobase/DfsBruteForce/DfsBruteForce.obj: TspAlgobase/DfsBruteForce/DfsBruteForce.cpp.obj
 .PHONY : TspAlgobase/DfsBruteForce/DfsBruteForce.obj
 
@@ -434,9 +410,6 @@ help:
 	@echo ... Graph/SymmetricalGraph.obj
 	@echo ... Graph/SymmetricalGraph.i
 	@echo ... Graph/SymmetricalGraph.s
-	@echo ... TspAlgobase/BruteForce/TspBruteForce.obj
-	@echo ... TspAlgobase/BruteForce/TspBruteForce.i
-	@echo ... TspAlgobase/BruteForce/TspBruteForce.s
 	@echo ... TspAlgobase/DfsBruteForce/DfsBruteForce.obj
 	@echo ... TspAlgobase/DfsBruteForce/DfsBruteForce.i
 	@echo ... TspAlgobase/DfsBruteForce/DfsBruteForce.s

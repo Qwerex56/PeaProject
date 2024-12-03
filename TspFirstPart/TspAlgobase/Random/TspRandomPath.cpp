@@ -6,13 +6,14 @@
 #include <algorithm>
 #include <chrono>
 #include <iostream>
+#include <numeric>
 #include <fstream>
 
 #include "TspRandomPath.h"
 
 namespace pea_tsp::algo {
 
-TspRandomPath::TspRandomPath(const std::string &conf_path) : TspAlgoBase(conf_path) { }
+TspRandomPath::TspRandomPath(const std::string &conf_path, const std::string &graph_conf_path) : TspAlgoBase(conf_path, graph_conf_path) { }
 
 std::vector<int> TspRandomPath::FindSolution() {
   std::random_device rd;
@@ -28,6 +29,8 @@ std::vector<int> TspRandomPath::FindSolution() {
 
   auto min_travel_weight = INT_MAX;
   auto min_path = std::vector<int>();
+
+  auto found_optimal_solution = min_travel_weight == optimal_solution_;
 
   do {
     // Close path
@@ -45,6 +48,8 @@ std::vector<int> TspRandomPath::FindSolution() {
     if (current_path_weight < min_travel_weight) {
       min_travel_weight = current_path_weight;
       min_path = path;
+
+      found_optimal_solution = min_travel_weight == optimal_solution_;
     }
 
     // delete duplicate vertex
@@ -52,6 +57,11 @@ std::vector<int> TspRandomPath::FindSolution() {
     std::shuffle(path.begin(), path.end(), gen);
 
     current_time = std::chrono::steady_clock::now();
+
+    if (found_optimal_solution) {
+      std::cout << "Found optimal solution\n";
+      break;
+    }
 
     if (do_show_progress_
         && std::chrono::duration_cast<std::chrono::milliseconds>(current_time - start_time).count() % 5000 == 0) {

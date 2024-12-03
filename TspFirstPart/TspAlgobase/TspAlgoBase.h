@@ -15,7 +15,7 @@ namespace pea_tsp::algo {
 class TspAlgoBase {
  public:
   TspAlgoBase() = default;
-  explicit TspAlgoBase(const std::string &conf_path);
+  explicit TspAlgoBase(const std::string &conf_path, const std::string &graph_conf_path = "");
 
   virtual std::vector<int> FindSolution() = 0;
 

@@ -13,13 +13,11 @@ namespace pea_tsp::algo {
 class TspRandomPath : public pea_tsp::algo::TspAlgoBase {
  public:
   TspRandomPath() = default;
-  explicit TspRandomPath(const std::string &conf_path);
+  explicit TspRandomPath(const std::string &conf_path, const std::string &graph_conf_path = "");
 
   std::vector<int> FindSolution() final;
   std::vector<int> FindSolutionWithTries(int tries);
  private:
-
-  std::chrono::seconds max_time{60}; // 60 seconds
 };
 
 } // algo

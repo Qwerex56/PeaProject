@@ -5,12 +5,14 @@
 #include <chrono>
 #include <stack>
 #include <iostream>
+#include <algorithm>
 #include "TspBabDfs.h"
 
 namespace pea_tsp::algo {
 
-TspBabDfs::TspBabDfs(const std::string &conf_path) : TspAlgoBase(conf_path) {
-  bound_algo = new TspNearestNeighbour(conf_path, false);
+TspBabDfs::TspBabDfs(const std::string &conf_path, const std::string &graph_conf_path) : TspAlgoBase(conf_path,
+                                                                                                     graph_conf_path) {
+  bound_algo = new TspNearestNeighbour(conf_path, false, graph_conf_path);
 }
 
 std::vector<int> TspBabDfs::FindSolution() {
@@ -23,9 +25,12 @@ std::vector<int> TspBabDfs::FindSolution() {
 
   const auto start{std::chrono::steady_clock::now()};
   auto current_time{std::chrono::steady_clock::now()};
-  auto has_time_passed = false;
+
+  auto found_optimal_solution = path_weight == optimal_solution_;
 
   for (auto start_point = 1; start_point <= graph_->GetDimension(); ++start_point) {
+    const auto start_iteration{std::chrono::steady_clock::now()};
+
     std::stack<std::pair<int, int>> path_stack{};
 
     std::vector<int> current_path{};
@@ -88,18 +93,24 @@ std::vector<int> TspBabDfs::FindSolution() {
         if (current_path_weight <= path_weight) {
           path_weight = current_path_weight;
           path_tour = current_path;
+
+          found_optimal_solution = path_weight == optimal_solution_;
         }
       }
 
       current_time = std::chrono::steady_clock::now();
-      has_time_passed =
-          std::chrono::duration_cast<std::chrono::seconds>(current_time - start).count() >= max_time.count();
 
-      if (std::chrono::duration_cast<std::chrono::seconds>(current_time - start).count()
+      if (std::chrono::duration_cast<std::chrono::seconds>(current_time - start_iteration).count()
           >= max_time.count() / graph_->GetDimension())
         break;
     }
-    if (has_time_passed) break;
+    if (do_show_progress_)
+      std::cout << start_point << std::endl;
+
+    if (found_optimal_solution) {
+      std::cout << "Found optimal solution\n";
+      break;
+    }
   }
 
   const auto end{std::chrono::steady_clock::now()};

@@ -13,7 +13,7 @@ namespace pea_tsp::algo {
 class TspBabDfs : public TspAlgoBase {
  public:
   TspBabDfs() = default;
-  explicit TspBabDfs(const std::string &conf_path);
+  explicit TspBabDfs(const std::string &conf_path, const std::string &graph_conf_path = "");
 
   std::vector<int> FindSolution() final;
 

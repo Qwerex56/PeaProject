@@ -12,7 +12,7 @@ namespace pea_tsp::algo {
 class [[maybe_unused]] TspNearestNeighbour : public TspAlgoBase {
  public:
   TspNearestNeighbour() = default;
-  [[maybe_unused]] explicit TspNearestNeighbour(const std::string &conf_path, bool create_log = true);
+  [[maybe_unused]] explicit TspNearestNeighbour(const std::string &conf_path, bool create_log = true, const std::string &graph_conf_path = "");
 
   std::vector<int> FindSolution() final;
 

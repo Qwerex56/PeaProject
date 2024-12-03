@@ -1,5 +1,6 @@
 show_progress=0
-graph_path=E:\C-Projects\PeaProject\br17.atsp
+graph_path=E:\C-Projects\PeaProject\43\p43.atsp
 is_symmetrical=0
-graph_config=E:\C-Projects\PeaProject\br17.atsp
+graph_config=E:\C-Projects\PeaProject\43\p43.atsp
 max_work_time=1800
+optimal_solution=5620

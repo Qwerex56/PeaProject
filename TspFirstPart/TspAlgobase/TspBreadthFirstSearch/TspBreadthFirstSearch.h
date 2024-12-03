@@ -13,7 +13,7 @@ namespace pea_tsp::algo {
 class TspBreadthFirstSearch : public TspAlgoBase {
  public:
   TspBreadthFirstSearch() = default;
-  [[maybe_unused]] explicit TspBreadthFirstSearch(const std::string &conf_path);
+  [[maybe_unused]] explicit TspBreadthFirstSearch(const std::string &conf_path, const std::string &graph_conf_path = "");
 
   std::vector<int> FindSolution() final;
 

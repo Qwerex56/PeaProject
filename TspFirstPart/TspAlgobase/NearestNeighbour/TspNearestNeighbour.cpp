@@ -7,10 +7,13 @@
 #include <algorithm>
 #include <stack>
 #include <chrono>
+#include <iostream>
 
 namespace pea_tsp::algo {
-[[maybe_unused]] TspNearestNeighbour::TspNearestNeighbour(const std::string &conf_path, bool create_log)
-    : TspAlgoBase(conf_path) {
+[[maybe_unused]] TspNearestNeighbour::TspNearestNeighbour(const std::string &conf_path,
+                                                          bool create_log,
+                                                          const std::string &graph_conf_path)
+    : TspAlgoBase(conf_path, graph_conf_path) {
   do_crete_log = create_log;
 }
 
@@ -24,9 +27,12 @@ std::vector<int> TspNearestNeighbour::FindSolution() {
 
   const auto start{std::chrono::steady_clock::now()};
   auto current_time{std::chrono::steady_clock::now()};
-  auto has_time_passed = false;
+
+  auto found_optimal_solution = path_weight == optimal_solution_;
 
   for (auto start_point = 1; start_point <= graph_->GetDimension(); ++start_point) {
+    const auto start_iteration{std::chrono::steady_clock::now()};
+
     std::stack<std::pair<int, int>> path_stack{};
 
     std::vector<int> current_path{};
@@ -65,16 +71,25 @@ std::vector<int> TspNearestNeighbour::FindSolution() {
         if (current_path_weight < path_weight) {
           path_weight = current_path_weight;
           path_tour = current_path;
+
+          found_optimal_solution = path_weight == optimal_solution_;
         }
       }
 
       current_time = std::chrono::steady_clock::now();
+
+      if (std::chrono::duration_cast<std::chrono::seconds>(current_time - start_iteration).count()
+          >= max_time.count() / graph_->GetDimension())
+        break;
     }
 
-    has_time_passed =
-        std::chrono::duration_cast<std::chrono::seconds>(current_time - start).count() >= max_time.count();
+    if (do_show_progress_)
+      std::cout << start_point << std::endl;
 
-    if (has_time_passed) break;
+    if (found_optimal_solution) {
+      std::cout << "Found optimal solution\n";
+      break;
+    }
   }
 
   const auto end{std::chrono::steady_clock::now()};

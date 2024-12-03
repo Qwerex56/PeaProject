@@ -204,6 +204,7 @@ CMakeFiles/TspFirstPart.dir/TspAlgobase/DfsBruteForce/DfsBruteForce.cpp.obj: \
  E:/Rider\ Ides/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/charconv \
  E:/Rider\ Ides/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/span \
  E:/Rider\ Ides/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/variant \
+ E:/Rider\ Ides/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/iostream \
  E:\C-Projects\PeaProject\TspFirstPart\TspAlgobase\DfsBruteForce\DfsBruteForce.h \
  E:/C-Projects/PeaProject/TspFirstPart/TspAlgobase/TspAlgoBase.h \
  E:/Rider\ Ides/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/map \

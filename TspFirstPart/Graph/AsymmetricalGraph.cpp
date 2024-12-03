@@ -77,7 +77,7 @@ Graph &AsymmetricalGraph::AddPoint(int point_id, int to_point, int weight) {
     points[point_id].reserve(GetDimension() + 1);
   }
 
-  if (point_id == to_point || weight == -1 || weight == 9999 || weight == 0) {
+  if (point_id == to_point || weight == -1 || weight >= 9999 || weight == 0) {
     weight = -1;
   }
 

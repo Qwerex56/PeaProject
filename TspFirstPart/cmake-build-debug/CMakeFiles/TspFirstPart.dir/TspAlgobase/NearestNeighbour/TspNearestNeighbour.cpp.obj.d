@@ -216,4 +216,5 @@ CMakeFiles/TspFirstPart.dir/TspAlgobase/NearestNeighbour/TspNearestNeighbour.cpp
  E:/Rider\ Ides/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/deque \
  E:/Rider\ Ides/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_deque.h \
  E:/Rider\ Ides/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/deque.tcc \
- E:/Rider\ Ides/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_stack.h
+ E:/Rider\ Ides/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_stack.h \
+ E:/Rider\ Ides/CLion/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/iostream

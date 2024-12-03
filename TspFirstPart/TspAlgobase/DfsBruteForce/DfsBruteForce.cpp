@@ -5,22 +5,26 @@
 #include <stack>
 #include <algorithm>
 #include <chrono>
+#include <iostream>
 
 #include "DfsBruteForce.h"
 
 namespace pea_tsp::algo {
-DfsBruteForce::DfsBruteForce(const std::string &conf_path) : TspAlgoBase(conf_path) {}
+DfsBruteForce::DfsBruteForce(const std::string &conf_path, const std::string &graph_conf_path) : TspAlgoBase(conf_path,
+                                                                                                             graph_conf_path) {}
 
 std::vector<int> DfsBruteForce::FindSolution() {
   auto path_weight = INT_MAX;
-  auto path_tour = std::vector<int>{};
+  auto min_path = std::vector<int>{};
 
   const auto start{std::chrono::steady_clock::now()};
   auto current_time{std::chrono::steady_clock::now()};
 
+  auto found_optimal_solution = path_weight == optimal_solution_;
+
   for (auto start_point = 1; start_point <= graph_->GetDimension(); ++start_point) {
-    // stack of pairs <point_id, depth>
-    // depth defines how deep node should be in path
+    const auto start_iteration{std::chrono::steady_clock::now()};
+
     std::stack<std::pair<int, int>> path_stack{};
 
     std::vector<int> current_path{};
@@ -69,27 +73,39 @@ std::vector<int> DfsBruteForce::FindSolution() {
 
         if (current_path_weight < path_weight && current_path_weight > 0) {
           path_weight = current_path_weight;
-          path_tour = current_path;
+          min_path = current_path;
+
+          found_optimal_solution = path_weight == optimal_solution_;
         }
       }
 
       current_time = std::chrono::steady_clock::now();
 
-      if (std::chrono::duration_cast<std::chrono::seconds>(current_time - start).count()
+      if (std::chrono::duration_cast<std::chrono::seconds>(current_time - start_iteration).count()
           >= max_time.count() / graph_->GetDimension())
         break;
+
+      if (found_optimal_solution) break;
+    }
+
+    if (do_show_progress_)
+      std::cout << start_point << std::endl;
+
+    if (found_optimal_solution) {
+      std::cout << "Found optimal solution\n";
+      break;
     }
   }
 
   const auto end{std::chrono::steady_clock::now()};
   const std::chrono::duration<double> elapsed_seconds{end - start};
 
-  if (path_tour.empty()) {
+  if (min_path.empty()) {
     best_found_solution = -1;
-  } else best_found_solution = GetPathWeight(path_tour);
+  } else best_found_solution = GetPathWeight(min_path);
 
-  SaveToFile(path_tour, path_weight, elapsed_seconds.count(), "DfsBruteForce");
-  return path_tour;
+  SaveToFile(min_path, path_weight, elapsed_seconds.count(), "DfsBruteForce");
+  return min_path;
 }
 } // algo
 // pea_tsp

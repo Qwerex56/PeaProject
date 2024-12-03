@@ -12,7 +12,7 @@ namespace pea_tsp::algo {
 class TspBestFirstSearch : public TspAlgoBase {
  public:
   TspBestFirstSearch() = default;
-  [[maybe_unused]] explicit TspBestFirstSearch(const std::string &conf_path);
+  [[maybe_unused]] explicit TspBestFirstSearch(const std::string &conf_path, const std::string &graph_conf_path = "");
 
   std::vector<int> FindSolution() final;
 

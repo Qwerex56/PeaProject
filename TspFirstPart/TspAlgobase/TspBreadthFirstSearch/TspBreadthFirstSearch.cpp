@@ -8,8 +8,11 @@
 
 namespace pea_tsp::algo {
 
-[[maybe_unused]] TspBreadthFirstSearch::TspBreadthFirstSearch(const std::string &conf_path) : TspAlgoBase(conf_path) {
-  bound_algo = new TspNearestNeighbour(conf_path, false);
+[[maybe_unused]] TspBreadthFirstSearch::TspBreadthFirstSearch(const std::string &conf_path,
+                                                              const std::string &graph_conf_path) : TspAlgoBase(
+    conf_path,
+    graph_conf_path) {
+  bound_algo = new TspNearestNeighbour(conf_path, false, graph_conf_path);
 }
 
 std::vector<int> TspBreadthFirstSearch::FindSolution() {
@@ -24,12 +27,16 @@ std::vector<int> TspBreadthFirstSearch::FindSolution() {
   auto current_time{std::chrono::steady_clock::now()};
   auto has_time_passed = false;
 
+  auto found_optimal_solution = path_weight == optimal_solution_;
+
   struct Node {
     int current_point;
     std::vector<int> path;
   };
 
   for (auto start_point = 1; start_point <= graph_->GetDimension(); ++start_point) {
+    const auto start_iteration{std::chrono::steady_clock::now()};
+
     std::queue<Node> path_queue{};
     path_queue.emplace(start_point, std::vector<int>{start_point});
 
@@ -77,6 +84,8 @@ std::vector<int> TspBreadthFirstSearch::FindSolution() {
         if (current_path_weight <= path_weight) {
           path_weight = current_path_weight;
           path_tour = current_path;
+
+          found_optimal_solution = path_weight == optimal_solution_;
         }
       }
 
@@ -84,9 +93,17 @@ std::vector<int> TspBreadthFirstSearch::FindSolution() {
       has_time_passed =
           std::chrono::duration_cast<std::chrono::seconds>(current_time - start).count() >= max_time.count();
 
-      if (std::chrono::duration_cast<std::chrono::seconds>(current_time - start).count()
+      if (std::chrono::duration_cast<std::chrono::seconds>(current_time - start_iteration).count()
           >= max_time.count() / graph_->GetDimension())
         break;
+    }
+
+    if (do_show_progress_)
+      std::cout << start_point << std::endl;
+
+    if (found_optimal_solution) {
+      std::cout << "Found optimal solution\n";
+      break;
     }
 
     if (has_time_passed) break;
